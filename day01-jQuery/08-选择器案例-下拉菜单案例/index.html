@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <title></title>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      .wrap {
+        width: 330px;
+        height: 30px;
+        margin: 100px auto 0;
+        padding-left: 10px;
+        background-image: url(imgs/bg.jpg);
+      }
+
+      .wrap li {
+        background-image: url(imgs/libg.jpg);
+      }
+
+      .wrap > ul > li {
+        float: left;
+        margin-right: 10px;
+        position: relative;
+      }
+
+      .wrap a {
+        display: block;
+        height: 30px;
+        width: 100px;
+        text-decoration: none;
+        color: #000;
+        line-height: 30px;
+        text-align: center;
+      }
+
+      .wrap li ul {
+        position: absolute;
+        top: 30px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <ul>
+        <li>
+          <a href="javascript:void(0);">一级菜单1</a>
+          <ul class="son">
+            <li><a href="javascript:void(0);">二级菜单11</a></li>
+            <li><a href="javascript:void(0);">二级菜单12</a></li>
+            <li><a href="javascript:void(0);">二级菜单13</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="javascript:void(0);">一级菜单2</a>
+          <ul class="son">
+            <li><a href="javascript:void(0);">二级菜单21</a></li>
+            <li><a href="javascript:void(0);">二级菜单22</a></li>
+            <li><a href="javascript:void(0);">二级菜单23</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="javascript:void(0);">一级菜单3</a>
+          <ul>
+            <li><a href="javascript:void(0);">二级菜单31</a></li>
+            <li><a href="javascript:void(0);">二级菜单32</a></li>
+            <li><a href="javascript:void(0);">二级菜单33</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 1.引包 -->
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+      // 1. 获取元素 a标签
+      var $links = $('.wrap>ul>li>a')
+      // 2. 给a标签注册鼠标移入事件
+      $links.mouseenter(function () {
+        // 在移入的事件处理函数中找到a的兄弟ul,然后让ul展示
+        $(this).next().show()
+      })
+
+      // 3. 给a标签注册鼠标移除事件
+      $links.mouseleave(function () {
+        // 在移除的事件中,找到a的兄弟ul, 然后让ul隐藏
+        $(this).next().hide()
+      })
+    </script>
+  </body>
+</html>

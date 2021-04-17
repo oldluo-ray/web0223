@@ -49,10 +49,15 @@
       // })
 
       // 简写一下:
-
+      // 隐式迭代
       $('li').mouseenter(function () {
         //链式编程
-        $(this).css({ backgroundColor: 'pink' }).siblings()
+        // this是一个dom对象,不能调用jquery的方法
+        // 把一个dom对象转成jquery对象 $(dom)
+        $(this)
+          .css({ backgroundColor: 'pink' })
+          .siblings()
+          .css('backgroundColor', '')
 
         // console.log(
         //   $(this)
