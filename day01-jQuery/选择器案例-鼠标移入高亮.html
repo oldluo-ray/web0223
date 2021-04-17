@@ -52,16 +52,14 @@
 
       $('li').mouseenter(function () {
         //链式编程
-        // $(this)
-        //   .css({ backgroundColor: 'pink' })
-        //   .siblings()
-        //
-        console.log(
-          $(this)
-            .css({ backgroundColor: 'pink' })
-            .siblings()
-            .css('backgroundColor', '')
-        )
+        $(this).css({ backgroundColor: 'pink' }).siblings()
+
+        // console.log(
+        //   $(this)
+        //     .css({ backgroundColor: 'pink' })
+        //     .siblings()
+        //     .css('backgroundColor', '')
+        // )
       })
     </script>
   </body>
