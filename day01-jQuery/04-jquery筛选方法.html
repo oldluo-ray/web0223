@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="box" class="box"></div>
+
+    <div id="far">
+      <p>
+        <span id="text">嘿嘿嘿</span>
+        <h5>呵呵呵</h5>
+        <span>123</span>
+      </p>
+      <ul>
+        <!-- <div>456</div>
+        <li id="one">1</li>
+        <li>2</li> -->
+        <li>3</li>
+      </ul>
+      <ul>
+        <li id="two">4</li>
+        <li>5</li>
+        <span>j</span>
+        <li>6</li>
+        <p>y</p>
+      </ul>
+    </div>
+
+    <form action="">
+     <textarea name="" id="" cols="30" rows="10"></textarea>
+      <input type="text">
+      <input type="submit">
+      <button>按钮</button>
+      <select name="" id=""></select>
+      <input type="checkbox">
+    </form>
+    <!-- 本地jquery库 -->
+    <script src="jquery-1.12.4.js"></script>
+
+    <script>
+      // 移入jquery库之后,就可以在全局得到一个$函数
+      // 1. $(函数) ==> 入口函数 当dom结构加载完毕,函数被调用
+      // 2. $('选择器') ==> 获取dom中的元素,并且包装一下,就可以调动jquery中的强大的方法了
+      // 注意: $('选择器') 获取到指定的dom元素之后,jquery会用一个伪数组包裹这个dom对象,包裹之后就可以使用jquery中的提供的函数了.如果不包裹,那么一个dom对象是无法调用jquery中提供的函数的
+      // console.log($('#box'))
+      // $('#box').text('呵呵')
+
+      // console.log($('.box'))
+      // console.log($('div'))
+      // console.log($('*')) // * 表示获取所有的元素
+      // console.log($('body, div'))
+
+      // 层级选择器
+      // console.log($('#far span'))
+      // console.log($('p>span'))
+      // console.log($('span~h5'))
+      // console.log($('#one+li'))
+      // console.log($('#one~li'))
+
+      // 过滤选择器
+      // console.log($('div:first'));
+      // console.log($('li:first')); // 先找到页面上所有的li,然后找到里面的第一个
+      // console.log($('li:last')); // 先找到页面上所有的li,然后找到里面的最后一个
+      // console.log($('li:not(#one)')); // 先找到页面上所有的li,过滤掉id为one的
+      // console.log($('li:eq(2)')); // 先找到页面上所有的li,然后找下标为2的那个
+      // console.log($(':header')); //找到所有的h标签,注意,前面不能加前缀
+      // console.log($('span:contains(123)')); // 包含123文本的标签
+      // console.log($('ul:has(#two)')); //包含id为two的ul 
+      // console.log($('div:parent')); // 包含子元素或文本的div
+
+      // console.log($('li:first-child')); // 保证li是其父元素中的第一个子元素
+      // console.log($('li:last-child')); // 保证li是其父元素中的最后个子元素
+      // console.log($('li:only-child')); // 保证li是其父元素中的唯一一个子元素
+      // console.log($('li:nth-child(3)')); // 保证li是其父元素中的第3个子元素
+
+      // console.log($('span[id^="t"]')) 属性选择器和dom中是一样的
+
+      console.log($(':input'))
+      console.log($(':submit'))
+    </script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .one {
+        border: 10px solid blue;
+      }
+
+      .two {
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box" class="one"></div>
+    <script src="jquery-1.12.4.js"></script>
+
+    <script>
+      // 通过css方法给dom对象添加行内样式
+      // 可以传入一个对象,一次添加多个样式, 并且可以不写单位. 如果是xxx-xxx的样式,要改写成小驼峰命名法
+      // 设置样式
+      $('#box').css({
+        width: 100,
+        height: 100,
+        backgroundColor: 'red',
+      })
+
+      // 获取样式
+      // 只能获取行内样式.注意: js中本身通过style只能获取到行内样式.类名添加的样式一定是获取不到的. 但是jquery中的css底层进行了优化.可以通过css函数拿到所有的样式
+      console.log($('#box').css('backgroundColor'))
+
+      // 通过类名操作样式
+      //   $('#box').addClass('one')
+      //   $('#box').addClass('one two')
+
+      // 移除类名
+      //   $('#box').removeClass() //移除所有
+      //   $('#box').removeClass('one') //移除指定
+      //   $('#box').removeClass('one two') //移除多个
+
+      // 判断是否有类名
+      //   console.log($('#box').hasClass('one'))
+
+      // 切换类名:
+      $('#box').toggleClass('one')
+    </script>
+  </body>
+</html>

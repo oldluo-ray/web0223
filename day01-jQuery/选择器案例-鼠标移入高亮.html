@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <div id="box">
+      <ul>
+        <li>我是li元素1</li>
+        <li>我是li元素2</li>
+        <li>我是li元素3</li>
+        <li>我是li元素4</li>
+        <li>我是li元素5</li>
+        <li>我是li元素6</li>
+        <li>我是li元素7</li>
+        <li>我是li元素8</li>
+      </ul>
+    </div>
+    <script>
+      //webapi
+      // var lis = document.getElementsByTagName('li')
+      // for (var i = 0; i < lis.length; i++) {
+      //   lis[i].onmouseenter = function () {
+      //     for (var i = 0; i < lis.length; i++) {
+      //       lis[i].style.backgroundColor = ''
+      //     }
+      //     this.style.backgroundColor = 'pink'
+      //   }
+      // }
+    </script>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+      // 1. 获取元素
+      // var $lis = $('li')
+      // // 2. 遍历,注册鼠标移入事件
+      // $lis.mouseenter(function () {
+      //   // 3. 在事件处理函数中给当前元素添加高亮,并且排他
+      //   // console.log(this)
+      //   // 注意:这里的this是一个dom. dom对象是不可以调用jquery中的方法的
+      //   // 将dom对象传入到$()中,就直接将dom转成jqurey对象了,就可以调用jquery的方法了
+
+      //   // 给自己添加高亮样式
+      //   $(this).css({
+      //     backgroundColor: 'pink',
+      //   })
+      //   // 将其他兄弟元素的高亮样式去掉
+      //   $(this).siblings().css('backgroundColor', '')
+      // })
+
+      // 简写一下:
+
+      $('li').mouseenter(function () {
+        //链式编程
+        // $(this)
+        //   .css({ backgroundColor: 'pink' })
+        //   .siblings()
+        //
+        console.log(
+          $(this)
+            .css({ backgroundColor: 'pink' })
+            .siblings()
+            .css('backgroundColor', '')
+        )
+      })
+    </script>
+  </body>
+</html>
