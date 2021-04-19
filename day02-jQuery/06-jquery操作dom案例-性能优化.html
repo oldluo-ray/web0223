@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <title></title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        border: 1px solid #c0c0c0;
+      }
+
+      th,
+      td {
+        border: 1px solid #d0d0d0;
+        color: #404060;
+        padding: 10px;
+      }
+
+      th {
+        background-color: #09c;
+        font: bold 16px '微软雅黑';
+        color: #fff;
+      }
+
+      td {
+        font: 14px '微软雅黑';
+      }
+
+      tbody tr {
+        background-color: #f0f0f0;
+      }
+
+      tbody tr:hover {
+        cursor: pointer;
+        background-color: #fafafa;
+      }
+    </style>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+      $(function () {
+        // 模拟从后台拿到的数据
+        var datas = [
+          {
+            name: '海静',
+            url: 'http://www.atguigu.com',
+            type: '光头lsp',
+          },
+          {
+            name: '沛华',
+            url: 'http://www.atguigu.com.com',
+            type: '渣男锡纸烫',
+          },
+          {
+            name: '彤彤',
+            url: 'http://web.atguigu.cn',
+            type: '嘿嘿嘿',
+          },
+        ]
+
+        // 1. 获取元素,给按钮注册点击事件 j_btnGetData
+        $('#j_btnGetData').click(function () {
+          // 2. 根据数组datas,然后动态的创建表格中的元素,添加到table中(j_tbData)
+          // 3. datas中数组有几个对象,就应该动态创建几个tr.对象中有几个键值对,就应该在这个tr中有几个td
+          // 注意:由于js中字符串不可变, 所以利用 + 拼接字符串,会导致内存中有过多的冗余的字符串.会占用很多的内存空间. 利用数组实现之后,内存中冗余的字符串大量减少,从而节省了内存空间
+          var arr = []
+          datas.forEach(function (item, index) {
+            arr.push('<tr>')
+            // 每一个对象有几个键值对就有几个td
+            for (var key in item) {
+              arr.push('<td>')
+              arr.push(item[key])
+              arr.push('</td>')
+            }
+
+            arr.push('</tr>')
+          })
+
+          // 把拼接好的str字符串,添加到j_tbData里面
+          $('#j_tbData').html(arr.join(''))
+        })
+      })
+    </script>
+  </head>
+
+  <body>
+    <input type="button" value="获取数据" id="j_btnGetData" />
+    <table>
+      <thead>
+        <tr>
+          <th>标题</th>
+          <th>地址</th>
+          <th>说明</th>
+        </tr>
+      </thead>
+      <tbody id="j_tbData"></tbody>
+    </table>
+  </body>
+</html>
