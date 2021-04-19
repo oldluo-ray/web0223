@@ -1,0 +1,124 @@
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    
+    .wrap {
+      width: 300px;
+      margin: 100px auto 0;
+    }
+    
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      border: 1px solid #c0c0c0;
+    }
+    
+    th,
+    td {
+      border: 1px solid #d0d0d0;
+      color: #404060;
+      padding: 10px;
+    }
+    
+    th {
+      background-color: #09c;
+      font: bold 16px "微软雅黑";
+      color: #fff;
+    }
+    
+    td {
+      font: 14px "微软雅黑";
+    }
+    
+    tbody tr {
+      background-color: #f0f0f0;
+    }
+    
+    tbody tr:hover {
+      cursor: pointer;
+      background-color: #fafafa;
+    }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function() {
+      
+      //需求:
+      // 1. 给全选注册点击事件,下面的跟着全选变化
+      $('#j_cbAll').click(function(){
+        
+        $('#j_tb input').prop('checked', $('#j_cbAll').prop('checked'));
+        
+      });
+      
+//      2. 给下面的每一个注册点击事件,如果都选中了,全选也选中
+  
+      $('#j_tb input').click(function(){
+  
+//        console.log($('#j_tb input:checked').length == 4);
+
+        $('#j_cbAll').prop('checked', $('#j_tb input:checked').length == 4 );
+        
+      });
+      
+    });
+  </script>
+</head>
+<body>
+<div class="wrap">
+  <table>
+    <thead>
+    <tr>
+      <th>
+        <input type="checkbox" id="j_cbAll"/>
+      </th>
+      <th>课程名称</th>
+      <th>所属学院</th>
+    </tr>
+    </thead>
+    <tbody id="j_tb">
+    <tr>
+      <td>
+        <input type="checkbox"/>
+      </td>
+      <td>JavaScript</td>
+      <td>前端与移动开发学院</td>
+    </tr>
+    <tr>
+      <td>
+        <input type="checkbox"/>
+      </td>
+      <td>css</td>
+      <td>前端与移动开发学院</td>
+    </tr>
+    <tr>
+      <td>
+        <input type="checkbox"/>
+      </td>
+      <td>html</td>
+      <td>前端与移动开发学院</td>
+    </tr>
+    <tr>
+      <td>
+        <input type="checkbox"/>
+      </td>
+      <td>jQuery</td>
+      <td>前端与移动开发学院</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+
+</html>

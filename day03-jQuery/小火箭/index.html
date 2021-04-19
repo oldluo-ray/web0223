@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body {
+      height: 8000px;
+    }
+    
+    a {
+      color: #FFF;
+    }
+    
+    .actGotop {
+      position: fixed;
+      bottom: 50px;
+      right: 50px;
+      width: 150px;
+      height: 195px;
+      display: none;
+      z-index: 100;
+    }
+    
+    .actGotop a, .actGotop a:link {
+      width: 150px;
+      height: 195px;
+      display: inline-block;
+      background: url(images/gotop.png) no-repeat;
+      outline: none;
+    }
+    
+    .actGotop a:hover {
+      width: 150px;
+      height: 195px;
+      background: url(images/gotop.gif) no-repeat;
+      outline: none;
+    }
+  </style>
+
+</head>
+<body>
+
+<!-- 老版本兼容性: http://blog.csdn.net/dongdong9223/article/details/50846678?locationNum=5&fps=1  -->
+
+<!-- 返回顶部小火箭 -->
+<div class="actGotop"><a href="javascript:;" title="Top"></a></div>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    // 小火箭
+    // 1. 滚动到一定位置, 小火箭 慢慢的显示 (fadeIn), 没到 fadeOut
+    
+    $(window).scroll(function(){
+      var instance = $(window).scrollTop();
+      
+      if(instance > 1000){
+        $('.actGotop').fadeIn(2000);
+      }else{
+  
+        $('.actGotop').fadeOut(2000);      }
+    });
+    
+    // 2. 点击的时候, 回到顶部
+    $('.actGotop').click(function(){
+//      $(window).scrollTop(0);
+      
+      // 由于浏览器的怪异模式,导致有的不能使用html控制,需要使用body控制
+//      所有在这里,我们使用并集选择器把二者都获取到
+        $('html, body').animate({
+          scrollTop : 0
+        },2000);
+      
+//      document.documentElement.scrollTop =
+    })
+    
+    
+    
+    
+    
+    
+
+  });
+</script>
+
+</body>
+</html>

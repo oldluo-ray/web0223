@@ -1,0 +1,143 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.wrap {
+  width: 410px;
+  margin: 100px auto 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid #c0c0c0;
+}
+
+th,
+td {
+  border: 1px solid #d0d0d0;
+  color: #404060;
+  padding: 10px;
+}
+
+th {
+  background-color: #09c;
+  font: bold 16px "微软雅黑";
+  color: #fff;
+}
+
+td {
+  font: 14px "微软雅黑";
+}
+
+td a.get {
+  text-decoration: none;
+}
+
+a.del:hover {
+  text-decoration: underline;
+}
+
+tbody tr {
+  background-color: #f0f0f0;
+}
+
+tbody tr:hover {
+  cursor: pointer;
+  background-color: #fafafa;
+}
+
+.btnAdd {
+  width: 110px;
+  height: 30px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.form-item {
+  height: 100%;
+  position: relative;
+  padding-left: 100px;
+  padding-right: 20px;
+  margin-bottom: 34px;
+  line-height: 36px;
+}
+
+.form-item > .lb {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 100px;
+  text-align: right;
+}
+
+.form-item > .txt {
+  width: 300px;
+  height: 32px;
+}
+
+.mask {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.15;
+  display: none;
+}
+
+.form-add {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  margin-left: -197px;
+  padding-bottom: 20px;
+  background: #fff;
+  display: none;
+}
+
+.form-add-title {
+  background-color: #f7f7f7;
+  border-width: 1px 1px 0 1px;
+  border-bottom: 0;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.form-add-title span {
+  width: auto;
+  height: 18px;
+  font-size: 16px;
+  font-family: 宋体;
+  font-weight: bold;
+  color: rgb(102, 102, 102);
+  text-indent: 12px;
+  padding: 8px 0px 10px;
+  margin-right: 10px;
+  display: block;
+  overflow: hidden;
+  text-align: left;
+}
+
+.form-add-title div {
+  width: 16px;
+  height: 20px;
+  position: absolute;
+  right: 10px;
+  top: 6px;
+  font-size: 30px;
+  line-height: 16px;
+  cursor: pointer;
+}
+
+.form-submit {
+  text-align: center;
+}
+
+.form-submit input {
+  width: 170px;
+  height: 32px;
+}

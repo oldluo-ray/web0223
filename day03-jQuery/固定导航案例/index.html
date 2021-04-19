@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0
+    }
+    
+    img {
+      vertical-align: top;
+    }
+    
+    .main {
+      margin: 0 auto;
+      width: 1000px;
+      padding-top: 10px;
+    }
+    
+    .fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      // 思路: 1. 当页面卷去的高度 达到 topPart的高度时, 将 nav 加上 fixed 类
+      //       2. 卷去高度 小于 topPart 高度时, nav 移除 fixed 类
+      
+      
+      $(window).scroll(function(){
+        //页面顶部滚动出去的距离
+        var top = $(window).scrollTop();
+        //获取topPart的高度
+        var height = $('#topPart').outerHeight();
+        
+        if(top >= height){
+          $('#navBar').addClass('fixed');
+          //由于给navBar加了固定定位,导致navBar脱标了,下面的main要往上走,所以出来了闪一个的效果
+//          为了解决这个问题,在给navBar加固定定位的时候,给main加一个margin-top 加 navBar的高度
+          $('#mainPart').css('marginTop', $('#navBar').height());
+        }else{
+          $('#navBar').removeClass('fixed');
+          $('#mainPart').css('marginTop', 0);
+        }
+        
+      });
+      
+     
+        
+      
+      
+    });
+  </script>
+
+</head>
+<body>
+<div class="top" id="topPart">
+  <img src="images/top.png" alt=""/>
+</div>
+<div class="nav" id="navBar">
+  <img src="images/nav.png" alt=""/>
+</div>
+<div class="main" id="mainPart">
+  <img src="images/main.png" alt=""/>
+</div>
+</body>
+</html>

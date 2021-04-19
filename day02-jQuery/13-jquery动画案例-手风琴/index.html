@@ -47,9 +47,10 @@
     <script src="jquery-1.12.4.min.js"></script>
     <script>
       $(function () {
-        //     需求:
-        // 1.鼠标移入到对应的li中,当前li宽度变成800,其他的li变成100
-        $('#box li').mouseenter(function () {
+        //     需求: 手风琴需求
+        // 1. 鼠标移入到li中,当前li的宽度缓慢变成800px.其他的兄弟li.宽度缓慢的变成100px
+        $('li').mouseenter(function () {
+          // 当前li宽度是800px.其他的li宽度是100
           $(this)
             .stop(true)
             .animate({ width: 800 })
@@ -57,9 +58,9 @@
             .stop(true)
             .animate({ width: 100 })
         })
-        // 2. 一旦鼠标移动大盒子(box),所有的li都恢复到240
+        // 2. 鼠标离开box的时候,每一个li的宽度变成240px
         $('#box').mouseleave(function () {
-          $(this).find('li').stop(true).animate({ width: 240 })
+          $('li').stop(true).animate({ width: 240 })
         })
       })
     </script>
