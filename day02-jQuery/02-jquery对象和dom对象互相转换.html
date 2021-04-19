@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="box"></div>
+    <script src="jquery-1.12.4.min.js"></script>
+
+    <script>
+      // 将jquery对象转成dom对象:
+      console.log($('#box'))
+      console.log($('#box')[0])
+      console.log($('#box').get(0))
+
+      // 把dom对象转成jquery
+      var box = document.getElementById('box')
+      console.log($(box))
+    </script>
+  </body>
+</html>

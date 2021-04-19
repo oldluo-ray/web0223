@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <title></title>
+    <style type="text/css">
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      ul {
+        list-style-type: none;
+      }
+
+      .parentWrap {
+        width: 200px;
+        text-align: center;
+      }
+
+      .menuGroup {
+        border: 1px solid #999;
+        background-color: #e0ecff;
+      }
+
+      .groupTitle {
+        display: block;
+        height: 20px;
+        line-height: 20px;
+        font-size: 16px;
+        border-bottom: 1px solid #ccc;
+        cursor: pointer;
+      }
+
+      .menuGroup > div {
+        height: 200px;
+        background-color: #fff;
+        display: none;
+      }
+      .menuGroup > div.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="parentWrap">
+      <li class="menuGroup">
+        <span class="groupTitle">标题1</span>
+        <div>我是弹出来的div1</div>
+      </li>
+      <li class="menuGroup">
+        <span class="groupTitle">标题2</span>
+        <div>我是弹出来的div2</div>
+      </li>
+      <li class="menuGroup">
+        <span class="groupTitle">标题3</span>
+        <div>我是弹出来的div3</div>
+      </li>
+      <li class="menuGroup">
+        <span class="groupTitle">标题4</span>
+        <div>我是弹出来的div4</div>
+      </li>
+    </ul>
+  </body>
+
+  <!-- 1. 引包 -->
+  <script src="jquery-1.12.4.min.js"></script>
+
+  <script>
+    // 需求:
+    // 1. 点击标题,当前标题的内容打开,其他的标题内容关闭
+    // 2. 点击标题,当前标题的内容关闭,其他的标题内容也关闭
+
+    // 在样式中定义一个active类. div如果有这个类就打开,如果没有这个类就关闭
+
+    // 代码书写的逻辑
+    // 1. 获取元素
+    var $spans = $('span')
+    // 2. 给每一个span注册点击事件
+    $spans.click(function () {
+      // 3. 在事件处理函数中,动态的给div添加active或移除active.
+      // 4. 并且其他的li里面的div都要关闭
+      console.log($(this).next())
+      $(this)
+        .next()
+        .toggleClass('active')
+        .parent()
+        .siblings()
+        .find('div')
+        .removeClass('active')
+    })
+  </script>
+</html>

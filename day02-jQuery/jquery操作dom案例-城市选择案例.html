@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <title></title>
+    <style>
+      select {
+        width: 200px;
+        background-color: teal;
+        height: 200px;
+        font-size: 20px;
+      }
+
+      .btn-box {
+        width: 30px;
+        display: inline-block;
+        vertical-align: top;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>城市选择：</h1>
+    <select id="src-city" name="src-city" multiple>
+      <option value="1">北京</option>
+      <option value="2">上海</option>
+      <option value="3">深圳</option>
+      <option value="4">广州</option>
+      <option value="5">西虹市</option>
+    </select>
+    <div class="btn-box">
+      <!--实体字符-->
+      <button id="btn-sel-all">&gt;&gt;</button>
+      <button id="btn-sel-none">&lt;&lt;</button>
+      <button id="btn-sel">&gt;</button>
+      <button id="btn-back">&lt;</button>
+    </div>
+    <select id="tar-city" name="tar-city" multiple></select>
+
+    <!--1. 引入jquery-->
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+      //2. 入口函数
+      $(function () {
+        // 需求: 1.点击btn-sel-all 然src里面的都到target里面
+        $('#btn-sel-all').click(function () {
+          $('#tar-city').append($('#src-city').children())
+        })
+        //      2.点击btn-sel,让src中选中的到target里面
+        $('#btn-sel').click(function () {
+          $('#tar-city').append($('#src-city > option:selected'))
+        })
+      })
+    </script>
+  </body>
+</html>

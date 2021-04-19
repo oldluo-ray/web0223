@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box" style="border: 10px solid blue"></div>
+    <!-- <ul id="ul1">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
+    <ul id="ul2">
+      <li id="li1">1</li>
+      <li id="li2">2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul> -->
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+      // 1. jquery是什么:  是一个js库
+      // 2. jquery的作用: write less do more
+      // 3. $函数从哪里来的,可以做什么?
+      //    3.1 可以把dom对象转成jquery对象 $(dom对象)
+      //    3.2 可以当做入口函数使用 $(function(){}) 里面的回调函数当页面中的dom结构加载完毕就会被调用
+      // 3.3. window.onload和$(function(){})的同异点:
+      // 相同点: 页面加载完毕,js代码才执行
+      // 不同点: 前者是当页面中所有的dom结构以及外部资源加载完毕. 后者是只要dom结构加载完毕就可以
+      //    3.4 $('选择器') 可以页面中的dom元素
+      // 4. 选择器
+      // 获取ul $('#ul')
+      // 获取当前ul下面所有的li  $('ul li') $('#ul').children() $('#ul').find('li')
+
+      // 获取<li>2</li>  $('li').eq(1)  $('ul li:nth-child(2)')
+
+      // index()的注意点:
+      //   $('#li1').index() // 返回的下标是多少 0
+      //   $('#ul1 li, #ul2 li').index() // 返回的下标是多少 0
+      //   $('#ul1 li, #ul2 li').index(指定的id为li2的dom对象) // 返回的下标是多少 6
+
+      // 5. 操作样式
+      //   5.1 操作行内
+      // css({属性名: 值, 属性名: 值}) 注意:属性名小驼峰命名法 可以忽略单位
+      // css('属性名', '值')
+      //   5.2 操作类名
+      //    添加类名: addClass
+      //    移除类名: removeClass
+      //    判断是否有指定类名:    hasClass
+      //    切换类名: toggleClass
+
+      // 涉及到之前的知识,为了梳理知识点,要学会总结:
+      //   js原生可以操作样式, jquery可以操作样式
+      // js原生：
+      //   行内   设置: dom对象.style.属性名 = 值
+      //          获取: dom对象.style.属性名 但是要注意,只能拿到行内样式
+      var box = document.getElementById('box')
+      console.log(box.style.width)
+      console.log(box.style.height)
+      console.log(box.style.backgroundColor)
+      console.log(box.style.border)
+      //   类
+      //   className
+      box.className = 'one two'
+      //   classList
+      box.classList.add('three')
+      // jquery:
+      // 行内:  设置: css({}) 获取: css('属性名') 注意: jquery的css底层进行了优化,可以获取到元素的所有样式
+      //   console.log($('#box').css('width'))
+      //   console.log($('#box').css('height'))
+      //   console.log($('#box').css('backgroundColor'))
+      //   console.log($('#box').css('border'))
+
+      // 类:
+      //    添加类名: addClass
+      //    移除类名: removeClass
+      //    判断是否有指定类名:    hasClass
+      //    切换类名: toggleClass
+      // 通过offset系列,client系列, scroll系列 可以获取到元素的宽高,内容宽高等值,但是拿到的是数字,没有单位
+      //   console.log(box.offsetWidth)
+
+    //   操作样式所有方式的总结: 
+    //   1. js原生 注意点: style只能操作行内样式, 是字符串,带单位
+    //   2. js原生 注意点: offset系列,client系列, scroll系列 只能拿到宽高等值,并且是数字,不带单位
+        //  3. jquery css() 可以设置/获取样式 设置时,添加到了行内, 获取时可以获取所有样式. 也是字符串, 也带单位
+    </script>
+  </body>
+</html>

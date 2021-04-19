@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      ul {
+        list-style: none;
+        width: 1300px;
+      }
+
+      div {
+        width: 1200px;
+        height: 400px;
+        border: 2px solid red;
+        margin: 100px auto;
+        overflow: hidden;
+      }
+
+      div li {
+        width: 240px;
+        height: 400px;
+        float: left;
+      }
+
+      div li.accordion1 {
+        background-image: url(images/1.jpg);
+      }
+      div li.accordion2 {
+        background-image: url(images/2.jpg);
+      }
+      div li.accordion3 {
+        background-image: url(images/3.jpg);
+      }
+      div li.accordion4 {
+        background-image: url(images/4.jpg);
+      }
+      div li.accordion5 {
+        background-image: url(images/5.jpg);
+      }
+    </style>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+      $(function () {
+        //     需求:
+        // 1.鼠标移入到对应的li中,当前li宽度变成800,其他的li变成100
+        $('#box li').mouseenter(function () {
+          $(this)
+            .stop(true)
+            .animate({ width: 800 })
+            .siblings()
+            .stop(true)
+            .animate({ width: 100 })
+        })
+        // 2. 一旦鼠标移动大盒子(box),所有的li都恢复到240
+        $('#box').mouseleave(function () {
+          $(this).find('li').stop(true).animate({ width: 240 })
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <div id="box">
+      <ul>
+        <li class="accordion1"></li>
+        <li class="accordion2"></li>
+        <li class="accordion3"></li>
+        <li class="accordion4"></li>
+        <li class="accordion5"></li>
+      </ul>
+    </div>
+  </body>
+</html>

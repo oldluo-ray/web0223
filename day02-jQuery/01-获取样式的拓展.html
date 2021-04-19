@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box" style="border: 10px solid blue"></div>
+
+    <script>
+      var box = document.getElementById('box')
+      //   通过js原生,想要获取box的背景颜色
+      // 当前的代码:
+      // 1. 通过style可以获取到border,因为border是行内样式
+      // 2. 通过offset系列可以获取到width和height
+      // 3. 通过js原生之前没有学习过某个方法可以获取到背景颜色
+      // 有一个方法,是一个全局方法:
+      //   getComputedStyle(要获取样式的dom对象) 返回一个样式对象
+      //   console.log(getComputedStyle(box))
+      //   console.log(getComputedStyle(box).width) // 字符串带单位
+      //   console.log(getComputedStyle(box).backgroundColor) // 字符串带单位
+      //   注意: 这个getComputedStyle可以获取到指定dom对象的所有样式(不受限制)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      span {
+        display: block;
+        width: 100px;
+        height: 30px;
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <span id="span">hehehe</span>
+    </div>
+    <p>这是一个p</p>
+    <div id="box2"></div>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+      // 添加
+      // jquery对象.append(jquery对象/dom对象/html格式的字符串)
+      //   $('#box').append($('<h1>我是标题</h1>'))
+      //   var h3 = document.createElement('h3')
+      //   h3.textContent = '我是h3'
+      //   $('#box').append(h3)
+      //   $('#box').append('<h4>我是h4</h4>')
+      // append有剪切效果
+      //   $('#box').append($('p'))
+      //   $('#box').prepend($('p'))
+      //   $('#box').after($('span'))
+
+      //   $('#box').html('<h3>嘿嘿嘿</h3>')
+      //   console.log($('#box').html())
+      //   $('#box').html('')
+
+      // 清空:
+      //   $('#box').empty()
+
+      // 移除 删除自己
+      //   $('#box').remove()
+
+      // 克隆
+      var box = document.getElementById('box')
+      var box2 = document.getElementById('box2')
+      //   var span = box.getElementById('span')
+      var span = document.getElementById('span')
+      //   console.log(span)
+      //   span.onclick = function () {
+      //     console.log('测试')
+      //   }
+      $(span).click(function () {
+        console.log('span测试')
+      })
+      //   box.onclick = function () {
+      //     console.log('box测试')
+      //   }
+
+      $('#box').click(function () {
+        console.log('123')
+      })
+
+      // js原生克隆
+      //   var cloneSpan = span.cloneNode(true)
+      //   console.log(cloneSpan)
+      //   box2.appendChild(cloneSpan)
+
+      // jquery克隆
+      // jquery中克隆元素,不传true. 可以克隆子元素.但是事件处理函数无法克隆
+      // jquery中克隆元素,传true. 可以克隆子元素.并且事件处理函数也克隆了,但是要求是用jquery的方式克隆的事件
+      //
+      $('#box2').append($('#box').clone(true))
+    </script>
+  </body>
+</html>
