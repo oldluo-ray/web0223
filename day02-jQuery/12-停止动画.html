@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box {
+        width: 200px;
+        height: 200px;
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">stop(true,false)</button>
+    <button id="btn1">stop(true,true)</button>
+    <button id="btn2">stop(false,true)</button>
+    <button id="btn3">stop(false,false)</button>
+    <div id="box"></div>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+      $('#box').mouseenter(function () {
+        $(this).slideUp(4000)
+      })
+      $('#box').mouseleave(function () {
+        $(this).slideDown(4000)
+      })
+
+      $('#btn').click(function () {
+        $('#box').stop(true, false)
+      })
+      $('#btn1').click(function () {
+        $('#box').stop(true, true)
+      })
+      $('#btn2').click(function () {
+        $('#box').stop(false, true)
+      })
+      $('#btn3').click(function () {
+        $('#box').stop()
+      })
+    </script>
+  </body>
+</html>

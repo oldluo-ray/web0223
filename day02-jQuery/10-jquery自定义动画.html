@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box {
+        width: 200px;
+        height: 200px;
+        background-color: hotpink;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">盒子移动到某个位置上</button>
+
+    <div id="box"></div>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+      //   需求: 让box这个盒子从做移动到右边
+      $('#btn').click(function () {
+        $('#box').animate(
+          {
+            //   这些值是动画的目标值
+            top: 300,
+            left: 400,
+            opacity: 0.5,
+            width: 50,
+            height: 300,
+            // 注意: 依然是只能改样式的值为数字的类型.颜色改不了
+            backgroundColor: 'green',
+          },
+          1000,
+          'linear',
+          function () {
+            console.log('盒子移动到指定位置了')
+          }
+        )
+      })
+    </script>
+  </body>
+</html>

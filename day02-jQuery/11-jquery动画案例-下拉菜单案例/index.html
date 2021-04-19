@@ -47,19 +47,6 @@
         display: none;
       }
     </style>
-    <script src="jquery-1.12.4.min.js"></script>
-    <script>
-      // 入口函数
-      $(function () {
-        $('.wrap > ul > li').mouseenter(function () {
-          $(this).children('ul').stop(true).slideDown(1000)
-        })
-
-        $('.wrap > ul > li').mouseleave(function () {
-          $(this).children('ul').stop(true).slideUp(1000)
-        })
-      })
-    </script>
   </head>
 
   <body>
@@ -109,5 +96,19 @@
         </li>
       </ul>
     </div>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+      // 入口函数
+      $(function () {
+        $('.wrap>ul>li').mouseenter(function () {
+          // 解决动画队列的问题:
+          // 在动画执行之前先stop(true)即可
+          $(this).find('ul').stop(true).slideDown()
+        })
+        $('.wrap>ul>li').mouseleave(function () {
+          $(this).find('ul').stop(true).slideUp()
+        })
+      })
+    </script>
   </body>
 </html>

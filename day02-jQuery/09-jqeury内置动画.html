@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box {
+        width: 200px;
+        height: 200px;
+        background-color: hotpink;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn-show">show</button>
+    <button id="btn-hide">hide</button>
+    <button id="btn-toggle">toggle</button>
+
+    <button id="btn-fadein">fadein</button>
+    <button id="btn-fadeout">fadeout</button>
+    <button id="btn-fadetoggle">fadetoggle</button>
+
+    <button id="btn-slideUp">slideUp</button>
+    <button id="btn-slideDown">slideDown</button>
+    <button id="btn-slideToggle">slideToggle</button>
+
+    <div id="box"></div>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+      // 展示和隐藏:
+      $('#btn-show').click(function () {
+        $('#box').show(2000)
+      })
+      $('#btn-hide').click(function () {
+        $('#box').hide(1000, 'linear', function () {
+          console.log('盒子隐藏完毕')
+        })
+      })
+      $('#btn-toggle').click(function () {
+        $('#box').toggle(2000)
+      })
+
+      // 淡入淡出
+      $('#btn-fadein').click(function () {
+        $('#box').fadeIn(2000)
+      })
+      $('#btn-fadeout').click(function () {
+        $('#box').fadeOut(1000)
+      })
+      $('#btn-fadetoggle').click(function () {
+        $('#box').fadeToggle(2000)
+      })
+
+      // 下拉或上提
+      $('#btn-slideUp').click(function () {
+        $('#box').slideUp(2000)
+      })
+      $('#btn-slideDown').click(function () {
+        $('#box').slideDown(1000)
+      })
+      $('#btn-slideToggle').click(function () {
+        $('#box').slideToggle(2000)
+      })
+    </script>
+  </body>
+</html>

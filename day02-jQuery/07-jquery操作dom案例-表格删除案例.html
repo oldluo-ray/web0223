@@ -203,13 +203,13 @@
     <script>
       //    2. 入口函数
       $(function () {
-        //点击按钮,清空表体中的内容
+        // 需求:
+        // 1. 点击清空按钮,清空tbody中的所有内容
         $('#btn').click(function () {
           $('#j_tb').empty()
         })
-
-        //点击delete删除当前行
-        $('.get').click(function () {
+        // 2. 每一个表格项中都有一个a标签,点击a标签,删除这个a标签对应的tr
+        $('a').click(function () {
           $(this).parent().parent().remove()
         })
       })

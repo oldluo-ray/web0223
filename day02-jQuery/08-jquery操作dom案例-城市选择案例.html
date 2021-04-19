@@ -42,13 +42,14 @@
     <script>
       //2. 入口函数
       $(function () {
-        // 需求: 1.点击btn-sel-all 然src里面的都到target里面
+        // 需求1: 点击 >> 按钮, 将左侧下拉框中的所有的option移动到右侧的下拉框中
         $('#btn-sel-all').click(function () {
-          $('#tar-city').append($('#src-city').children())
+          $('#tar-city').append($('#src-city option'))
         })
-        //      2.点击btn-sel,让src中选中的到target里面
+
+        // 需求2: 点击 >按钮,将左侧下拉框中所有选中的option移动到右侧的下拉框
         $('#btn-sel').click(function () {
-          $('#tar-city').append($('#src-city > option:selected'))
+          $('#tar-city').append($('#src-city option:selected'))
         })
       })
     </script>
