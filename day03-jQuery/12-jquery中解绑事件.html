@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #far {
+        width: 200px;
+        height: 200px;
+        background-color: green;
+      }
+
+      #son {
+        width: 100px;
+        height: 100px;
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">off()</button>
+    <button id="btn1">off('mouseenter')</button>
+    <button id="btn2">off('mouseenter click', "**")</button>
+    <div id="far">
+      <div id="son"></div>
+      <p>呵呵</p>
+    </div>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+      // $('#son').on('click mouseenter', function () {
+      //   console.log('事件触发了')
+      // })
+
+      $('#far').on('click', '#son', function () {
+        console.log('son事件触发了')
+      })
+      $('#far').on('click', function () {
+        console.log('far事件触发了')
+      })
+
+      $('#btn').click(function () {
+        // 解绑son的所有事件
+        $('#son').off()
+      })
+      $('#btn1').click(function () {
+        // 解绑son的指定事件
+        $('#son').off('mouseenter')
+      })
+      $('#btn2').click(function () {
+        // 解绑son的指定事件,far的不受影响
+        $('#far').off('click', '**')
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+
+      #son {
+        width: 50px;
+        height: 50px;
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">按钮</button>
+    <div id="box">
+      <div id="son"></div>
+    </div>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+      // js原生:
+      //   注册事件 两种方式:
+      //  1. on+事件名
+      //  2. addEventListener
+      //   var box = document.getElementById('box')
+      //   box.onclick = function () {
+      //     console.log('box的点击事件触发了+onclick')
+      //   }
+
+      //   box.addEventListener('click', function () {
+      //     console.log('box的点击事件触发了+addEventListener')
+      //   })
+
+      //   // 点击按钮,让box的点击事件触发
+      //   var btn = document.getElementById('btn')
+      //   btn.onclick = function () {
+      // 只能触发onclick注册的事件
+      // box.onclick()
+      // 这个click函数就是dom对象本身拥有的函数
+      // 可以触发.两种方式注册的点击事件
+      // box.click()
+      //   }
+
+      // jqeury中事件触发:
+
+      $('#son').on('click mouseenter', function (e) {
+        console.log('son的点击事件')
+        console.log(e)
+      })
+      $('#box').on('click', function () {
+        console.log('box的点击事件')
+      })
+
+      $('#btn').click(function () {
+        // $('#son').click() // 可以触发,会冒泡
+        $('#son').trigger('click') //可以触发,会冒泡. 注意: 一次只能触发一个事件
+        // $('#son').triggerHandler('click') //可以触发,不会冒泡
+      })
+    </script>
+  </body>
+</html>

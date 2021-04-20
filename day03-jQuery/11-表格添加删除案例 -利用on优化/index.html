@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <title></title>
+    <link rel="stylesheet" href="checkDemo.css" />
+  </head>
+
+  <body>
+    <div class="wrap">
+      <div>
+        <input
+          type="button"
+          value="添加数据"
+          id="j_btnAddData"
+          class="btnAdd"
+        />
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>课程名称</th>
+            <th>所属学院</th>
+            <th>已学会</th>
+          </tr>
+        </thead>
+        <tbody id="j_tb">
+          <tr>
+            <td>JavaScript</td>
+            <td>前端学院</td>
+            <td><a href="javascript:;" class="get">GET</a></td>
+          </tr>
+          <tr>
+            <td>css</td>
+            <td>前端学院</td>
+            <td><a href="javascript:;" class="get">GET</a></td>
+          </tr>
+          <tr>
+            <td>html</td>
+            <td>前端学院</td>
+            <td><a href="javascript:;" class="get">GET</a></td>
+          </tr>
+          <tr>
+            <td>jQuery</td>
+            <td>前端学院</td>
+            <td><a href="javascript:;" class="get">GET</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="j_mask" class="mask"></div>
+    <div id="j_formAdd" class="form-add">
+      <div class="form-add-title">
+        <span>添加数据</span>
+
+        <div id="j_hideFormAdd">x</div>
+      </div>
+      <div class="form-item">
+        <label class="lb" for="j_txtLesson">课程名称：</label>
+        <input
+          class="txt"
+          type="text"
+          id="j_txtLesson"
+          placeholder="请输入课程名称"
+        />
+      </div>
+      <div class="form-item">
+        <label class="lb" for="j_txtBelSch">所属学院：</label>
+        <input
+          class="txt"
+          type="text"
+          id="j_txtBelSch"
+          placeholder="请输入所属学院"
+        />
+      </div>
+      <div class="form-submit">
+        <input type="button" value="添加" id="j_btnAdd" />
+      </div>
+    </div>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+      $(function () {
+        // 需求1: 点击按钮j_btnAddData, 然后让j_mask和j_formAdd展示
+        $('#j_btnAddData').click(function () {
+          $('#j_mask').show()
+          $('#j_formAdd').show()
+        })
+
+        // 需求2: 点击添加按钮j_btnAdd,获取课程j_txtLesson以及学院j_txtBelSch的内容,然后根据内容,动态的创建tr和td,添加到j_tb里面
+        $('#j_btnAdd').click(function () {
+          // 获取课程和学院的值
+          // 注意:字符串的trim()方法是去掉两边空格
+          var lesson = $('#j_txtLesson').val().trim()
+          var belSch = $('#j_txtBelSch').val().trim()
+
+          // 代码的健壮性处理:
+          // 1. 判断用户是否输入内容 判断是否是空字符串就可
+          // 2. 判断用户是否输入的是空格 直接trim()
+          if (!lesson || !belSch) {
+            alert('请输入正确的学院名或课程名')
+            return
+          }
+
+          // 根据课程和学院动态的拼接html格式的字符串tr和td
+          var arr = []
+          arr.push('<tr>')
+          arr.push('<td>' + lesson + '</td>')
+          arr.push('<td>' + belSch + '</td>')
+          arr.push('<td><a href="javascript:;" class="get">GET</a></td>')
+          arr.push('</tr>')
+          var htmlStr = arr.join('')
+          // 将拼接好的字符串添加到tbody中
+          $('#j_tb').append(htmlStr)
+
+          // 添加完毕之后,让j_mask和j_formAdd隐藏
+          $('#j_mask').hide()
+          $('#j_formAdd').hide()
+
+          // 代码的健壮性处理:
+          // 将j_txtLesson和j_txtBelSch的值清空
+          $('#j_txtLesson').val('')
+          $('#j_txtBelSch').val('')
+        })
+
+        // 需求3: 点击j_hideFormAdd,让j_mask和j_formAdd隐藏
+        $('#j_hideFormAdd').click(function () {
+          $('#j_mask').hide()
+          $('#j_formAdd').hide()
+        })
+
+        // 需求4: 点击.get,然后删除当前tr
+        // console.log($('.get'))
+        // 这种处理方式: 有一个问题.就是新增的数据,无法删除.
+        // 原因: $('.get')在新增之前就执行了,只有原来的数据,没有新的数据的a标签
+        // 所以导致新增的数据的a标签,没有点击事件
+        // 解决办法: 使用事件委托(将本来注册给a标签的事件,委托给父级元素)
+        // $('.get').click(function () {
+        //   $(this).parent().parent().remove()
+        // })
+        // 这样写还是比较麻烦
+        // $('#j_tb').click(function (e) {
+        //   // console.log(this)\
+        //   // 问题: 如何知道到底要删除谁?
+        //   // console.dir(e.target) //可以获取到事件目标
+        //   // 判断e.target.nodeName === 'A'并且要有类名get
+        //   // $(e.target).hasClass('get')
+        //   if (e.target.nodeName === 'A' && $(e.target).hasClass('get')) {
+        //     $(e.target).parent().parent().remove()
+        //   }
+        // })
+
+        $('#j_tb').on('click', 'a.get', function () {
+          $(this).parent().parent().remove()
+        })
+      })
+    </script>
+  </body>
+</html>

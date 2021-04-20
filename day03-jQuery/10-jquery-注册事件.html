@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #far {
+        width: 200px;
+        height: 200px;
+        background-color: green;
+      }
+
+      #son {
+        width: 100px;
+        height: 100px;
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="far">
+      <div id="son"></div>
+      <p>呵呵</p>
+    </div>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+      //   $('#son').on('click mouseenter', function () {
+      //     console.log('事件触发了')
+      //   })
+
+      // 事件委托
+      //   $('#far').on('click', '#son', function () {
+      //     console.log('点击son,触发事件了')
+      //   })
+
+      //   第三个参数(了解)
+      //   $('#far').on('click', ['a', 'b', 'c'], function (e) {
+      //     console.log(e.data)
+      //   })
+    </script>
+  </body>
+</html>

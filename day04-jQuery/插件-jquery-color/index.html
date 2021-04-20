@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    '
+    <style>
+      div {
+        width: 300px;
+        height: 300px;
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <button>点击颜色渐变</button>
+    <div></div>
+    <script src="jquery-1.12.4.js"></script>
+    <script src="jquery.color.js"></script>
+    <script>
+      $('button').click(function () {
+        $('div').animate(
+          {
+            backgroundColor: 'blue',
+          },
+          4000
+        )
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <title></title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      img {
+        vertical-align: top;
+      }
+
+      .main {
+        margin: 0 auto;
+        width: 1000px;
+        padding-top: 10px;
+      }
+
+      .fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top" id="topPart">
+      <img src="images/top.png" alt="" />
+    </div>
+    <div class="nav" id="navBar">
+      <img src="images/nav.png" alt="" />
+    </div>
+    <div class="main" id="mainPart">
+      <img src="images/main.png" alt="" />
+    </div>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+      $(function () {
+        // 需求: 当页面从顶部滚动出去一定的距离(topPart的高度), 给nav添加定位(fixed).然后main继续可以往上滚动
+        //1. 监听页面滚动 $(window).scroll()
+        $(window).scroll(function () {
+          //2. 在事件处理函数中获取页面从顶部滚动出去的距离
+          //  获取页面滚动出去的距离
+          var distance = $(window).scrollTop()
+          // 获取topPart的高度
+          var topHeight = $('#topPart').height()
+
+          //3. 判断这个距离是否已经达到了topPart的高度
+          if (distance >= topHeight) {
+            //4. 如果达到了就给nav添加定位, 如果没有达到还要把fixed移除掉
+            $('#navBar').addClass('fixed')
+            // 给main加margin-top
+            $('#mainPart').css({
+              // 值为navBar的高度
+              marginTop: $('#navBar').height(),
+            })
+          } else {
+            $('#navBar').removeClass('fixed')
+            // 给main加margin-top
+            $('#mainPart').css({
+              // 值为navBar的高度
+              marginTop: 0,
+            })
+          }
+
+          // 注意: 目前逻辑基本实现,但是存在一个问题.
+          // 问题的原因: 因为navBar设置了固定定位,所以脱标了.导致main要往上走,所以看起来,页面跳了一下
+          // 解决问题:
+          // 当navBar脱标的时候,
+          //   给main添加一个margin - top.然后当navBar定位取消的时候,
+          //   把margin - top取消掉
+        })
+      })
+    </script>
+  </body>
+</html>
