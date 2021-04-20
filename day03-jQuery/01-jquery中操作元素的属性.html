@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <div id="box" data-aaa="123"></div> -->
+    <input type="checkbox" index="abc" />
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+      // js原生中操作元素的属性:
+      // 1. setAttribute  getAttribute
+      //   var box = document.getElementById('box')
+      //   //   console.log(box.getAttribute('id'))
+      //   //   console.log(box.getAttribute('class'))
+      //   //   console.log(box.getAttribute('index'))
+      //   //   box.setAttribute('i', 0)
+      //   // 2.dataset方式
+      //   console.log(box.dataset)
+      //   box.dataset.bbb = 'bbb'
+
+      // 总结: 方式一,可以操作自定义的属性和预设的属性 方式二,只能操作自定义的属性
+
+      // jquery中操作属性的方法: attr()
+
+      //   $('#box').attr('class', 'box')
+      //   $('#box').attr('aaa', 'aaa')
+      //   $('#box').attr({
+      //     id: 'one',
+      //     bbb: 'bbb',
+      //   })
+      //   console.log($('#box').attr('id'))
+      //   console.log($('#box').attr('data-aaa'))
+
+      //   $('#box').removeAttr('id')
+      //   $('#box').removeAttr('data-aaa')
+
+      // 注意: 使用attr获取checked,selected,disabled这类属性的值,返回的结果是具体的字符串或undefined
+      // 实际开发中,希望拿到的值是true/false. 所以attr不能满足这方面的需求
+      // 当要操作chekced,selected,disabled这类属性时应该使用prop. 不可以操作自定义属性
+      console.log($('input[type=checkbox]').attr('checked'))
+      console.log($('input[type=checkbox]').prop('checked'))
+      console.log($('input[type=checkbox]').prop('index'))
+    </script>
+  </body>
+</html>
