@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      #box {
+        width: 100px;
+        height: 100px;
+        padding: 10px;
+        border: 10px solid blue;
+        background-color: red;
+        /* margin: 10px; */
+        position: absolute;
+      }
+
+      #far {
+        border: 1px solid black;
+        width: 300px;
+        height: 300px;
+        position: relative;
+        left: 10px;
+        top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="far">
+      <div id="box"></div>
+    </div>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+      // $('#box').offset({
+      //   left: 20,
+      //   top: 20,
+      // })
+
+      // console.log($('#box').offset())
+      // console.log($('#box').position())
+
+      // $('#box').position({ left: 10, top: 10 })
+
+
+      
+    </script>
+  </body>
+</html>

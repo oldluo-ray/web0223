@@ -141,8 +141,12 @@
         $('#j_tb').click(function (e) {
           // console.log(this)\
           // 问题: 如何知道到底要删除谁?
-          // console.log(e.target) 可以获取到事件目标
-          $(e.target).parent().parent().remove()
+          // console.dir(e.target) //可以获取到事件目标
+          // 判断e.target.nodeName === 'A'并且要有类名get
+          // $(e.target).hasClass('get')
+          if (e.target.nodeName === 'A' && $(e.target).hasClass('get')) {
+            $(e.target).parent().parent().remove()
+          }
         })
       })
     </script>

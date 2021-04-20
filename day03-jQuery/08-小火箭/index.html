@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <style>
+      body {
+        height: 8000px;
+      }
+
+      a {
+        color: #fff;
+      }
+
+      .actGotop {
+        position: fixed;
+        bottom: 50px;
+        right: 50px;
+        width: 150px;
+        height: 195px;
+        display: none;
+        z-index: 100;
+      }
+
+      .actGotop a,
+      .actGotop a:link {
+        width: 150px;
+        height: 195px;
+        display: inline-block;
+        background: url(images/gotop.png) no-repeat;
+        outline: none;
+      }
+
+      .actGotop a:hover {
+        width: 150px;
+        height: 195px;
+        background: url(images/gotop.gif) no-repeat;
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 返回顶部小火箭 -->
+    <div class="actGotop"><a href="javascript:;" title="Top"></a></div>
+
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+      $(function () {
+        // 小火箭
+        // 需求1. 页面从顶部滚动出去一定距离(1000px),就让小火箭缓慢展示出来
+        // 监听浏览器中整个页面的滚动事件
+        // js原生: window.onscroll
+        // jquery: $(window).scroll()
+        $(window).scroll(function () {
+          var scrollTop = $(window).scrollTop()
+
+          if (scrollTop >= 1000) {
+            //就让小火箭缓慢展示出来
+            $('.actGotop').stop(true).fadeIn()
+          } else {
+            $('.actGotop').stop(true).fadeOut()
+          }
+        })
+        // 需求2. 点击小火箭,让页面回到顶部,小火箭消失
+        $('.actGotop').click(function () {
+          // $(window).scrollTop(0) 直接回到顶部,需要缓慢的回去
+          // 注意:不是让浏览器移动,是让浏览器中的页面移动
+          // $(window).stop(true).animate({
+          //   scrollTop: 0,
+          // })
+          // 注意: 由于不同的浏览器会有一些怪异的行为,所以最好,html和body都写上
+          $('html,body').stop(true).animate({
+            scrollTop: 0,
+          })
+        })
+      })
+    </script>
+  </body>
+</html>
