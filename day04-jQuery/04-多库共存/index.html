@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="far"></div>
+    <script src="mylib.js"></script>
+    <script src="jquery-1.12.4.js"></script>
+
+    <script>
+      // 情况1: 自己的库或第三方库在jquery下面引入
+      // 注意: 当自定义库或第三方其他的库 和jquery的$冲突的时候,那么jquery中的$就不能使用了,如果还想使用jquery中的方法,就要调用jquery另外一个一个函数,这个函数名就叫jQuery
+      //   console.log(jQuery('#far'))
+      //   $()
+
+      // 情况2: 自己的库或第三方库在jquery上面面引入
+      // 注意: jquery中的$把自己的库中$给覆盖了
+      //   console.log($('#far'))
+      $.noConflict() //释放jqurey中对$的控制权
+      $()
+      console.log(jQuery('#far'))
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #far {
+        border: 1px solid blue;
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">按钮</button>
+    <div id="far">
+      <div id="son">123</div>
+      <p>456</p>
+    </div>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        // end函数,可以让jquery对象中的dom对象,回到上一个
+      $('#far')
+        .attr('class', 'box')
+        .children()
+        .css('color', 'red')
+        .end()
+        .css('backgroundColor', 'green')
+    </script>
+  </body>
+</html>

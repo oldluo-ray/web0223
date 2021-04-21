@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #far {
+        border: 1px solid blue;
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">按钮</button>
+    <div id="far">
+      <div id="son">123</div>
+      <p>456</p>
+    </div>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+      //  bind 不能事件委托
+      //   $('#son').bind('click mouseenter', function () {
+      //     console.log('事件触发了')
+      //   })
+
+      $('#btn').click(function () {
+        // $('#son').unbind()
+        //   $('#son').unbind('mouseenter')
+        // $('#far').undelegate()
+        $('#far').undelegate('click')
+      })
+
+      // delegate 可以事件委托
+      //   $('#far').delegate('选择器', '事件名', 事件处理函数)
+      //   $('#far').delegate('p', 'click mouseenter', function () {
+      //     console.log('p标签的事件触发了')
+      //   })
+
+      // one 注册的事件,只会执行一次
+      $('#far').one('click mouseenter', function () {
+        console.log('far的点击事件触发了')
+      })
+    </script>
+  </body>
+</html>
