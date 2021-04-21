@@ -64,8 +64,7 @@ $('.todo-header input').on('keyup', function (e) {
 
     $('.todo-main').append(str)
 
-    $('.todo-main, .todo-footer').show()
-    $('h1').remove()
+    show()
 
     // 调用修改全选的方法
     changeAllCheckbox()
@@ -137,3 +136,12 @@ function showListNum() {
   $('#doneNum').text(doneTotalNum)
   $('#totalNum').text(totalNum)
 }
+
+// 8.删除所有选中的任务项
+$('.todo-footer button.btn-danger').on('click', function () {
+  $('.todo-main>li>label>input:checked').parent().parent().remove()
+  //展示数字
+  showListNum()
+  // 展示todo-main和todo-footer
+  isShow()
+})

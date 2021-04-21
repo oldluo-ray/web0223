@@ -26,5 +26,3 @@ function show() {
   $('.todo-main, .todo-footer').show()
   $('h1').remove()
 }
-
-
