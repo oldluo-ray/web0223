@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 定义一个json对象
+      var jsonObj = [
+        {
+          "name": 'zs',
+         "age": 18,
+          "hobby": [],
+        },
+        {
+          "name": 'ls',
+          "age": 30,
+          "hobby": [],
+        },
+      ]
+      // 注意: 前后端交互,传递一定是字符串. 
+      // 所以如果要将json格式的对象,传入服务器. 那么要先将json对象,转成字符串
+    //   JSON.stringfy(json对象) 返回一个json格式的字符串
+    // 注意: 在js中,json和js对象是比较模糊的.所以不要再执着于双引号
+      var jsonStr = JSON.stringify(jsonObj) 
+      console.log(jsonStr)
+
+      // 一般在前端开发中,前端开发工程师,拿到的就是json格式的字符串
+      // 由于操作字符串,不方便,所以把json格式的字符串,转成js对象.这样更容易操作
+    //   JSON.parse('json格式的字符串') 返回一个js对象
+    var obj = JSON.parse(jsonStr)
+    console.log(obj)
+
+
+    </script>
+  </body>
+</html>

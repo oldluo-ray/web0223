@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* div.container {
+        border: 1px solid pink;
+      } */
+      .row div {
+        border: 1px solid blue;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 使用栅格系统,最外面要写一个布局容器 -->
+    <div class="container">
+      <!-- row 表示一行 -->
+      <!-- <div class="row"> -->
+      <!-- col表示是一行中的一列(一个盒子) md表示这个样式在高于992px生效, 1 表示在栅格的一行中占一份. 总共12份 -->
+      <!-- <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+        <div class="col-md-1">.col-md-1</div>
+      </div> -->
+
+      <!-- <div class="row"> -->
+      <!-- 在高于992生效,如果不符合要求,每一个div独自占一行  
+         8 表示占8/12
+         4 表示占4/12
+        -->
+      <!-- <div class="col-md-8">.col-md-8</div>
+        <div class="col-md-4">.col-md-4</div>
+      </div> -->
+
+      <!-- <div class="row">
+        <div class="col-md-4">.col-md-4</div>
+        <div class="col-md-4">.col-md-4</div>
+        <div class="col-md-4">.col-md-4</div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">.col-md-6</div>
+        <div class="col-md-6">.col-md-6</div>
+      </div> -->
+
+      <!-- <div class="row">
+        <div class="col-xs-12 col-md-8">.col-xs-12 .col-md-8</div>
+        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+      </div> -->
+
+      <!-- <div class="row">
+        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+      </div> -->
+      <!-- <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-8">
+          .col-xs-12 .col-sm-6 .col-md-8
+        </div>
+        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+      </div> -->
+      <!-- <div class="row">
+        <div class="col-xs-6 col-sm-4">
+          .col-xs-6 .col-sm-4
+          阿嘎发送到发送到发所发生的法师法师的法师的法师法士大夫第三个是大法官第三方公司的风格是发的格式的风格是大法官是大法官是大法官第三方告诉对方格式的风格是大法官的双方各十多个是
+        </div>
+        <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div> -->
+      <!-- 这个div的作用是清除浮动. 什么时候起作用: 屏幕是手机的时候,盒子display:block.清除浮动才会生效  -->
+      <!-- <div class="clearfix visible-xs-block"></div>
+        <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+      </div> -->
+      <!-- <div class="row">
+        <div class="col-xs-9">.col-xs-9</div>
+        <div class="col-xs-4">
+          .col-xs-4<br />Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets
+          wrapped onto a new line as one contiguous unit.
+        </div>
+        <div class="col-xs-6">
+          .col-xs-6<br />Subsequent columns continue along the new line.
+        </div>
+      </div> -->
+      <!-- <div class="row">
+        <div class="col-xs-6 col-sm-3">
+          .col-xs-6 .col-sm-3 Resize your viewport or check it out on your phone
+          for an example.
+        </div>
+        <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div> -->
+
+      <!-- Add the extra clearfix for only the required viewport -->
+      <!-- <div class="clearfix visible-xs-block"></div> -->
+
+      <!-- <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+        <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+      </div> -->
+
+      <!-- <div class="row">
+        <div class="col-sm-5 col-md-6">.col-sm-5 .col-md-6</div>
+        <div class="col-sm-5 col-sm-offset-2 col-md-6 col-md-offset-0">
+          .col-sm-5 .col-sm-offset-2 .col-md-6 .col-md-offset-0
+        </div>
+      </div> -->
+      <!-- <div class="row">
+        <div class="col-sm-6 col-md-5 col-lg-6">
+          .col-sm-6 .col-md-5 .col-lg-6
+        </div>
+        <div class="col-sm-6 col-md-5 col-md-offset-2 col-lg-6 col-lg-offset-0">
+          .col-sm-6 .col-md-5 .col-md-offset-2 .col-lg-6 .col-lg-offset-0
+        </div>
+      </div> -->
+      <!-- <div class="row">
+        <div class="col-md-4">.col-md-4</div>
+        <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+        <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
+      </div> -->
+      <!-- <div class="row">
+        <div class="col-xs-6 col-sm-4">col-xs-6 col-sm-4</div>
+        <div class="col-xs-6 col-sm-4">col-xs-6 col-sm-4</div>
+        <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-0">
+          col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-0
+        </div>
+      </div> -->
+      <!--  注意: 如果栅格在container中,是将container的宽度分成12份. 如果栅格嵌套了, 子栅格的12份是在父元素的宽度的基础上,分12份 -->
+      <!-- <div class="row">
+        <div class="col-sm-9">
+          Level 1: .col-sm-9
+          <div class="row">
+            <div class="col-xs-8 col-sm-6">Level 2: .col-xs-8 .col-sm-6</div>
+            <div class="col-xs-4 col-sm-6">Level 2: .col-xs-4 .col-sm-6</div>
+          </div>
+        </div>
+      </div> -->
+      <div class="row">
+        <div class="col-md-9 col-md-push-3">.col-md-9 .col-md-push-3</div>
+        <div class="col-md-3 col-md-pull-9">.col-md-3 .col-md-pull-9</div>
+      </div>
+    </div>
+  </body>
+</html>
