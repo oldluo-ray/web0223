@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <link rel="stylesheet" href="jquery-accordion.css" />
+  </head>
+  <body>
+    <div id="wrap">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <!-- <li></li>
+        <li></li> -->
+      </ul>
+    </div>
+    <!--我们封装的是jquery插件,所以要依赖jquery-->
+    <script src="jquery-1.12.4.js"></script>
+    <script src="jquery-accordion.js"></script>
+    <script>
+      //每一个jquery都可以调用这个方法
+
+      $('#wrap').accordion({
+        colors: ['red', 'blue', 'yellow', 'green', 'pink'],
+      })
+    </script>
+  </body>
+</html>

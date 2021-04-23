@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <style>
+      div {
+        height: 1500px;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <!--第二步:按照要求书写img标签-->
+    <img class="lazy" data-original="haha.jpg" width="489px" height="361px" />
+
+    <!--第一步引包-->
+    <script src="jquery-1.12.4.js"></script>
+    <script src="jquery.lazyload.js"></script>
+    <script>
+      //第三步: 调用lazyload方法
+      $('img.lazy').lazyload()
+    </script>
+  </body>
+</html>

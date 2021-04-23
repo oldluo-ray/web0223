@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+div {
+  width: 1200px;
+  height: 400px;
+  border: 2px solid #000;
+  margin: 100px auto;
+}
+
+ul {
+  width: 1300px;
+}
+
+li {
+  /* width: 240px; */
+  height: 400px;
+  float: left;
+}
