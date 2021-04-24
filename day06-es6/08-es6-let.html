@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- emmet语法: 用来快速生成标签  ul>li{$}*8 -->
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+    </ul>
+    <script>
+      //   {
+      //     {
+      //       let a = 1
+      //       {
+      //         console.log(a) //1
+      //       }
+      //     }
+      //     console.log(a) //Uncaught ReferenceError: a is not defined
+      //   }
+
+      // 此时i是一个全局变量
+      //   for (var i = 0; i < 4; i++) {
+      //     console.log(i)
+      //   }
+      //   console.log(i)
+      // 注意: 虽然let i = 0没有直接写在{}中,但是按照es6的标准执行的时候,就认为let i = 0 是 for循环{}中的局部变量
+      //   for (let i = 0; i < 4; i++) {
+      //     console.log(i)
+      //   }
+      //   console.log(i)
+      //   for (var i = 0; i < 5; i++) {
+      //     setTimeout(function () {
+      //       console.log(i)
+      //     })
+      //   }
+      //   for (let i = 0; i < 5; i++) {
+      //     // let i = 0
+      //     setTimeout(function () {
+      //       console.log(i)
+      //     })
+      //   }
+
+      //   var lis = document.getElementsByTagName('li')
+      //   for (let i = 0; i < lis.length; i++) {
+      //     lis[i].onclick = function () {
+      //       console.log(lis[i])
+      //       console.log(i)
+      //     }
+      //   }
+
+      //   var a = []
+      //   for (var i = 0; i < 10; i++) {
+      //     a[i] = function () {
+      //       console.log(i)
+      //     }
+      //   }
+      //   a[6]()
+      //   var a = []
+      //   for (let i = 0; i < 10; i++) {
+      //     a[i] = function () {
+      //       console.log(i)
+      //     }
+      //   }
+      //   a[6]()\
+      {
+        let a = 1
+      }
+
+      console.log(a)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // es5
+      // 函数作用域: 只有函数可以形成作用域
+      //   if (true) {
+      //     // 全局
+      //     var a = 1
+      //   }
+      //   function fn() {
+      //     var a = 2
+      //     console.log(a) //2
+      //   }
+      //   fn()
+      //   console.log(a) //1
+
+      // es6:
+      //   块作用域和函数作用域
+      // 块作用域: {} 如果在{}中声明变量(let)了,那么这个变量就是块作用域中的变量(局部作用域)
+      //   if (true) {
+      //     // a是当前块作用域中的局部变量
+      //     let a = 1
+      //   }
+      //   for (var i = 0; i < 1; i++) {
+      //     // console.log(1)
+      //     let a = 1
+      //   }
+
+      {
+        let a = 1
+        console.log(a)
+      }
+      //   注意:只要看见了{},里面写的不是属性,那这个{}就是一个块作用域
+      function fn() {
+        let a = 2
+        console.log(a)
+      }
+      fn()
+      // 此时全局已经没有a变量了
+      console.log(a)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   let arr = [1, 2, 3, 4]
+      //   // 需求: 将数组中的值,分别赋值给变量a,b,c,d
+      //   // 这行代码的作用: 首先在全局中定义了4个变量,然后按照数组的顺序,将数组中的值,依次赋值给4个变量
+      //   let [a, b, c, d] = arr
+      //   console.log(a, b, c, d)
+
+      // 数组的结构赋值
+      //   let [c, d] = [1]
+      //   console.log(c, d)
+      //   let [a] = [10, 20]
+      //   console.log(a)
+      //   在解构的时候,可以给变量设置默认值
+      //   let [e = 2, f = 20] = [10]
+      //   console.log(e, f)
+
+      // ...变量名 可以接收后面的所有的值, 表现形式是一个数组
+      // 剩余参数 ...变量名表示接收剩下的数据
+      //   let [g, h, ...abc] = [10, 11, 23, 22, 12, 3, 4, 5, 3]
+      //   console.log(g, h, abc)
+      //   let [a, [b, c, d], e] = [1, [2, 3, 4], 5]
+      //   console.log(a, b, c, d, e)
+      //   let a = 1
+      //   let b = 2
+      //   // 注意: 由于a,b已经被声明过,所以下面不要再写let了
+      //   ;[b, a] = [a, b]
+
+      //   console.log(a, b)
+      // 注意: 这样会报错.报错的内容是hoo没有被初始化,因为hoo=2还没有执行
+      let [foo = hoo, hoo = 2] = []
+      console.log(foo, hoo)
+    </script>
+  </body>
+</html>

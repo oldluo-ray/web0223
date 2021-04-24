@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   fn1()
+      // 这种写法没有把if的{}当做块作用域,所以下面可以调用
+      //   if (true) {
+      //     // 使用了函数声明的方式, 这个函数再全局
+      //     function fn1() {
+      //       alert(1)
+      //     }
+      //   }
+      //   fn1()
+
+      //如果真的想在声明块级作用域函数，使用函数表达式
+      if (true) {
+        //   这个函数在作用域
+        let fn1 = function () {
+          alert(1)
+        }
+      }
+      fn1()
+    </script>
+  </body>
+</html>

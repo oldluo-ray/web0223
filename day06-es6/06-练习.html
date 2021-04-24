@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //输出arr所有元素累加的结果
+      var arr = [1, 5, 8, 4, 2] //20
+      var res = arr.reduce(function (pre, item) {
+        return pre + item
+      }, 0)
+      console.log(res)
+    </script>
+  </body>
+</html>

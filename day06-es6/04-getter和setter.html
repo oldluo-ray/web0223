@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   var obj = {
+      //     firstName: '强东',
+      //     lastName: '刘',
+      //     get fullName() {
+      //       return this.lastName + this.firstName
+      //     },
+      //     set fullName(val) {
+      //       var arr = val.split('-')
+      //       this.firstName = arr[1]
+      //       this.lastName = arr[0]
+      //     },
+      //   }
+
+      //   console.log(obj.fullName)
+      //   obj.fullName = '强-哥'
+      //   console.log(obj.fullName)
+      //   console.log(obj.firstName)
+      //   console.log(obj.lastName)
+      //   obj.firstName = 'AAA'
+      //   console.log(obj.firstName)
+      //   console.log(obj.fullName)
+
+      // 总结:
+      //   注意: 利用getter/setter. 其实是在对象中添加了一个新的属性. 这个新的属性,在修改或获取时,按照我们自己定义的方式去访问(fullName). 其实跟firstName和lastName没有太大的关系,firstName和lastName依然可以随意的访问. 如果对象中每一个属性要都按照自己的要求去访问,那就把所有的属性,都改成getter和setter
+
+      var oo = {
+        name: 'lily',
+        get sex() {
+          return 'man'
+        },
+        set age(a) {},
+      }
+      oo.sex = 'woman'
+      // 注意: 设置了setter,属性可以赋值, 设置了getter,属性可以访问. 但是缺少一个,就失去了对应的功能
+      console.log(oo.sex) //结果依然是man
+      console.log(oo.age) //undefined
+    </script>
+  </body>
+</html>

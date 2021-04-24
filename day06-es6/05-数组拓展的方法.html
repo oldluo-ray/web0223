@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //需求: 将一个数组中的值,存储到一个对象里面
+      //   var arr = ['a','b','c'] =转成一个对象=> {a:0, b:1, c:2}
+      var arr = ['a', 'b', 'c']
+      // 定义一个空对象
+      //   var obj = {}
+      //   // 遍历数组,在遍历的过程中,给对象添加属性和值
+      //   arr.forEach(function (item, index) {
+      //     obj[item] = index
+      //   })
+      //   console.log(obj)
+
+      // 使用reduce
+      // 首先数组中有几个元素,reduce的回调函数就会执行几次
+      // 第一次回调函数执行,就会把initValue,赋值给pre
+      // 第二次回到函数执行, 会把上一次回调函数返回的结果,赋值给pre
+      // 第三次回到函数执行, 会把上一次回调函数返回的结果,赋值给pre
+      // 注意: reduce遍历数组完毕,会将最后一次的pre出去
+      var obj = arr.reduce(function (pre, item, index) {
+        // console.log(pre)
+        pre[item] = index
+        return pre
+      }, {})
+      console.log(obj)
+    </script>
+  </body>
+</html>

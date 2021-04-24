@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      ///构造函数  Person
+      function Person(name, age) {
+        // 注意: name和age最终添加到了实例的身上,所以这两个属性叫做实例属性
+        // 实例的属性只能被实例访问
+        this.name = name
+        this.age = age
+      }
+      var p1 = new Person('zs', 18)
+
+      // 注意:面向对象语言中添加到类上面的属性叫做静态属性, 在js中没有类,但是有构造函数.构造函数就类似于面向对象语言中的类. 所以加到构造函数上的属性,我们一般也叫静态属性
+      // 注意: 实例无法访问静态属性
+      Person.test = '123'
+
+      console.log(p1.test)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   let arr = [1, 2]
+      //   // 注意: 数组结构赋值的时候,变量名可以随意命名
+      //   let [a, b] = arr
+      //   console.log(a, b)
+
+      //   let obj = {
+      //     name: 'zs',
+      //     age: 18,
+      //     sex: '男',
+      //   }
+      //   // 对象的结构赋值
+      //   //   let {变量名, 变量名} = obj
+      //   // 注意: 对象解构时,变量名要求和对象的属性名一致.顺序随便写
+      //   let { age, name } = obj
+      //   console.log(age, name)
+
+      //   let a = 1,
+      //     b = 2
+      //   //   console.log({ a: a, b: b })
+      //   // 上面的代码可以简写成下面的属性
+      //   console.log({ a, b })
+      //   注意: 对象中的属性叫什么,解构出来的变量就必须叫什么,如果想自定义变量名,可以使用下面的这种形式. a 和 haha就是 新的变量名. foo和hoo这两个变量名就是没有定义了
+      //   let { foo: a, hoo: haha } = { foo: 1, hoo: 2 }
+      //   //   console.log(foo, hoo) //报错
+      //   console.log(a, haha) //1,2
+
+      //   let { x, y = 10 } = { x: 1 }
+      //   console.log(x, y)
+
+      //   let obj = { a: 1, b: [2, 3, 4] }
+      //   //   let {
+      //   //     a,
+      //   //     b: [b1, b2, b3],
+      //   //   } = obj
+      //   let { a, b } = obj
+      //   //   console.log(a, b1, b2, b3)
+      //   console.log(a, b)
+
+      //   let arr = [1, 2, 3]
+      //   // 由于数组本质是特殊的对象，因此可以对数组进行对象属性的解构
+
+      //   // 由于数组也是对象,所以数组也可以使用对象的结构语法
+      //   // 0在数组中是下标,但是如果把数组看做对象,下标其实就是对象中的键
+      //   // 0:first 就是将0这个键对应的值赋值给变量first
+      //   let { 0: first, [arr.length - 1]: last } = arr
+      //   console.log(first, last)
+
+      //   console.log(1)
+      //   let console = {
+      //     log: function () {
+      //       alert(123)
+      //     },
+      //   }
+      //   let {log} = console
+      //   log()
+      //   console.log()
+      //   let { log } = console
+      //   log(12312312312)
+      //   console.log(console.log)
+
+      //   function fn1([x, y, z]) {
+      //     console.log(x, y, z)
+      //   }
+      //   fn1([1, 2, 3])
+      //   function fn2({ x, y, z }) {
+      //     console.log(x, y, z)
+      //   }
+      //   fn2({ y: 2, x: 1, z: 3 })
+      let json = {
+        "name": 'lily',
+        "sex": 'nv',
+        "age": 18,
+      }
+      let { name, age, sex } = json
+      console.log(name, age, sex)
+    </script>
+  </body>
+</html>
