@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // es5中学到的数据类型:
+      // 基本数据类型: String, Number, Booelan, undefined, null
+      // 引用数据类型: Object, Array, Function
+
+      // es6标准的的数据类型:
+      // 基本数据类型: String, Number, Booelan, undefined, null, Symbol, BigInt
+      // 引用数据类型: Object, Array, Function
+
+      //   Symbol 英文释义是标记的意思.但是实际上,类似于java和c++这些流行的面向对象语言中的枚举(独一无二)
+
+      //   使用:
+      //   创建Symbol:
+      //   let s = Symbol('xyz')
+      //   let s1 = Symbol('xyz')
+      //   //   console.log(s)
+      //   //   console.log(s.toString())
+      //   console.log(s === s1)
+
+      // 用途:
+      //   let obj = {
+      //     name: 'lily',
+      //     todo() {
+      //       console.log('eat')
+      //     },
+      //   }
+      //修改
+      //   obj.name = 'xiaowang'
+      //   obj.todo = () => {
+      //     console.log('someThing~')
+      //   }
+      //   console.log(obj.name)
+      //   obj.todo()
+
+      //需求：让新增的属性和方法不和之前的冲突
+      //   let name = Symbol('name')
+      //   //   let name = 'name'
+      //   //   let todo = Symbol('todo')
+      //   let obj = {
+      //     name: '小王',
+      //   }
+      //   //   obj[name] = '老王'
+      //   //   obj[name] = '中王'
+      //   obj[Symbol('name')] = '老王'
+      //   obj[Symbol('name')] = '中王'
+      //   obj[name] = '大大王'
+
+      //   console.log(obj)
+      //   console.log(obj.name)
+      //   console.log(obj[name])
+
+      // 注意事项:
+      // 1. Symbol('描述信息') 没有实际意义
+      // 2. 不可以 new Symbol()
+      //   new Symbol()
+      // 3. 类型转换不可以转数字
+      //   console.log(String(Symbol('a'))) //Symbol(a)
+      //   console.log(Boolean(Symbol())) //true
+      //   //   console.log(Symbol() + 1) //Cannot convert a Symbol value to a number
+      //   console.log(Number(Symbol())) //Cannot convert a Symbol value to a number
+      // 4. 获取的时候,保证是同一个Symbol才能拿到值
+      // 5. for ..in 的时候,Symbol不会被遍历出来
+      //   {
+      //     let obj = {
+      //       name: 'lily', //原有对象拥有name属性
+      //       age: 18,
+      //     }
+      //     // let name = Symbol()
+      //     // obj[name] = '再见' //如果直接设置，则再也获取不到这个属性了
+
+      //     for (let i in obj) {
+      //       console.log(i)
+      //     }
+
+      //     //可以使用 Object.getOwnPropertySymbols方法来拿
+      //     console.log(Object.getOwnPropertySymbols(obj)) //[Symbol()]
+      //   }
+
+      // 问题: js中如果数值超过可以表达的最大数,会存在精度问题
+      //   console.log(Math.pow(2, 53) === Math.pow(2, 53) + 1)
+
+      // 数字后面跟一个n, 这个值就是BigInt的类型
+      //   const a = 2172141653n
+      //   const b = 15346349309n
+      //   // BigInt 可以保持精度
+      //   console.log(a * b) // 33334444555566667777n
+
+      //   // 普通整数无法保持精度
+      //   console.log(Number(a) * Number(b)) // 33334444555566670000
+
+      console.log(42n === 42) //false
+      console.log(typeof 42n) //false
+    </script>
+  </body>
+</html>

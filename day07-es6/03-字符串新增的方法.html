@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const { log } = console
+      // 字符串新增的方法
+      {
+        // let message = '      hello    world      '
+        // log(message)
+        // log(message.trim())
+        // log(message.trimStart())
+        // log(message.trimEnd())
+      }
+
+      {
+        // let message = 'hello    world'
+        // log(message.startsWith('hello')) //true
+        // log(message.endsWith('world')) ////true
+        // log(message.endsWith('ld')) //true
+        // log(message.includes('ld')) //true
+        // log(message.includes('or')) //true
+        // log(message.includes('你好啊')) //false
+      }
+
+      {
+        // let message = '海静，你好s啊'
+        // // 返回新的字符串
+        // log(message.repeat(10))
+      }
+
+      {
+        let message = '这个是密码'
+        log(message.padStart(8, '#'))
+        log(message.padEnd(8, '#'))
+        log(message.padStart(8, '#*2222'))
+      }
+
+      // 总结:
+      // 去掉空格:
+      //   trim()
+      //   trimStart()
+      //   trimEnd()
+
+      // 判断 返回结果都是布尔值
+      //   startsWith() 判断字符串是否以指定字符开头
+      //   endsWith() 判断字符串是否以指定字符结尾
+      //   includes() 判断字符串是否包含指定字符
+      // 重复
+      //   repeat(指定次数) 返回一个新的字符串, 重复指定次数
+      // 填充
+      padStart(长度, '要填充的字符') // 往字符串前面填充
+      padEnd(长度, '要填充的字符') //往字符串后面填充
+    </script>
+  </body>
+</html>

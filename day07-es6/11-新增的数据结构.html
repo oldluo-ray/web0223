@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // es6标准的的数据类型:
+      // 基本数据类型: String, Number, Booelan, undefined, null, Symbol, BigInt
+      // 引用数据类型: Object, Array, Function, Set(像数组,值不可以重复), Map(像对象,键值对存储)
+
+      //   let st = new Set([1, 2, 3, 4, 4, 3, 3, 1, 5])
+      //   console.log(st)
+      // 2.属性 size 长度
+      //   console.log(st.size)
+
+      //3.添加 add
+      //   st.add(4) // 无法添加成功
+      //   st.add(10)
+      //   st.add('hoo')
+      //   console.log(st)
+
+      //   //4.删除
+      //   st.delete(2)
+      //   console.log(st)
+
+      //   //5.判断是否存在某个元素
+      //   console.log(st.has(10))
+      //   console.log(st.has(11))
+
+      //   //6.清空所有的
+      //   st.clear()
+      //   console.log(st)
+
+      //   //7.和循环遍历相关的方法  keys方法和valus方法行为是一致的
+      //   let st2 = new Set(['a', 'b', 'c', 'd'])
+      //   console.log(st2.keys()) //"a","b","c","d"
+      //   console.log(st2.values()) //"a","b","c","d"
+
+      // 注意: 只能使用for of 遍历set结构, 不能使用for in
+      //   for (let a in st2) {
+      //     console.log(a) //"a", "b", "c", "d"
+      //   }
+      //   for (let a of st2.keys()) {
+      //     console.log(a) //"a", "b", "c", "d"
+      //   }
+
+      //   for (let a of st2.values()) {
+      //     console.log(a) //"a", "b", "c", "d"
+      //   }
+
+      // 8.entries() 获得键值对
+      //   console.log(st2.entries())
+      //   for (let b of st2.entries()) {
+      //     console.log(b)
+      //   }
+
+      //   //9.forEach set也有一个forEach方法,但是其他的没有
+      //   st2.forEach((item, index, s) => {
+      //     console.log(item, index, s)
+      //   })
+
+      //   st2.map((item, index, s) => {
+      //     console.log(item, index, s)
+      //   })
+
+      //   使用技巧:
+      //   let arr = [1, 2, 3, 4, 4, 3, 3, 1, 5]
+      //   // 需求:数组去重
+      //   console.log([...new Set(arr)])
+
+      //   // 需求:字符串去重
+      //   let str = 'aabcddbeff'
+      //   console.log([...new Set(str)].join(''))
+
+      // Map
+      //   let p1 = { name: 'lily' }
+      //   let obj1 = {
+      //     id: 1,
+      //     [p1]: 'good', //会自动将对象转成字符串 [Object object]
+      //   }
+      //   console.log(obj1)
+      let mp1 = new Map([
+        ['a', 1],
+        ['b', 2],
+      ])
+      let obj = { name: 'zs' }
+
+      //   let p2 = { name: 'lily' }
+      //   let mp2 = new Map([
+      //     ['a', 1],
+      //     [p2, 2],
+      //   ])
+      //   console.log(mp2)
+      mp1.set('c', 3)
+      mp1.set(obj, 4)
+
+      //   console.log(mp1)
+      //   console.log(mp1.get('c'))
+      console.log(mp1.get(obj))
+    </script>
+  </body>
+</html>

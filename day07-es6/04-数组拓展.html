@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+    </ul>
+    <script>
+      // 拓展运算符在数组中的使用:
+      //   let arr = [1, 2, 3]
+      //   //   console.log(...arr)
+
+      //   //   console.log([1, 2, ...[3, 4, 5], 6]) //[1,2,3,4,5,6]
+
+      //   function fn(x, y, z) {
+      //     console.log(x, y, z)
+      //   }
+      //   fn(...arr)
+
+      //   let arr = [1, 2, 3]
+      //   -复制数组
+      //   let newArr = [...arr]
+      //   console.log(newArr)
+      //   console.log(arr === newArr)
+      //   - 合并数组
+      //   let arr1 = ['a', 'b', 'c']
+      //   let newArr = [...arr, ...arr1]
+      //   console.log(newArr)
+
+      //   - 字符串转换为数组
+      //   let str = 'abcd' // ['a','b','c','d']
+      //   let arr = [...str]
+      //   console.log(arr)
+
+      // Array的静态方法
+      // 1. 将伪数组转成数组 Array.from(伪数组)
+      //   let lis = document.getElementsByTagName('li')
+      //   //   console.log(lis)
+      //   //   lis.forEach()
+      //   // 把维数组转成数组
+      //   let newArr = Array.from(lis)
+      //   console.log(newArr)
+      //   newArr.forEach(function (item, index) {
+      //     console.log(item, index)
+      //   })
+
+      //   Array.of(数字, 数字) 将数字转成数组
+      //   {
+      //     let arr1 = Array.of(1, 2, 3, 4)
+      //     console.log(arr1)
+      //     let arr2 = Array.of(1)
+      //     console.log(arr2)
+      //   }
+
+      //   let arr = [1, 2, 3]
+      //   arr.form(lis)
+
+      // 原型上的方法: 需要使用数组实例去调用
+      // 1. copyWithin
+      //   {
+      //     let arr = [1, 2, 3, 4, 5, 6, 7, 8]
+      //     // 0 表示从arr数组下标为0的位置上开始被替换
+      //     // 至于有几个值被替换,取决于后面的两个参数
+      //     // 4 表示找到arr中下标为4的值,作为要替换的内容的开头
+      //     // 6. 表示找到arr中下标为6的值, 最终替换的时候,就是拿下标为4~下标为6的内容(包含头,不包含尾),去替换从下标0开始的值
+      //     arr.copyWithin(0, 4, 6) //这个方法会修改数组本身
+      //     console.log(arr) //[5, 6, 3, 4, 5, 6, 7, 8]
+      //   }
+      //   {
+      //     let arr = [1, 2, 3, 4, 5, 6, 7, 8]
+      //     // 如果不传第三个参数: 那么要替换的内容就是从下标3开始一直到结尾(包含结尾)
+      //     arr.copyWithin(0, 3)
+      //     console.log(arr) // [4, 5, 6, 7, 8, 6, 7, 8]
+      //   }
+      //   {
+      //     let arr = [1, 2, 3, 4, 5, 6, 7, 8]
+      //     // 如果不传第三个参数: 那么要替换的内容就是从下标3开始一直到结尾(包含结尾)
+      //     arr.copyWithin(0)
+      //     console.log(arr)
+      //   }
+
+      // 2. fill 填充数组
+      // 如果使用一个空数组,这个数组中无法直接填充内容
+      //   let arr = []
+
+      //   let arr = [2, 3, 1]
+      //   let arr = []
+      //   // 如果arr是空数组,但是如果设置了长度,那么就可以填充了
+      //   arr.length = 4
+      //   arr.fill('a')
+      //   console.log(arr)
+
+      // 3.keys(), values(), entries() 方法
+
+      //   let arr = ['a', 'b', 'c']
+      //   //   console.log(arr.keys()) //返回一个数组迭代器对象
+      //   //   console.log(arr.values()) //返回一个数组迭代器对象
+      //   //   console.log(arr.entries())  //返回一个数组迭代器对象
+      //   let keyIterator = arr.keys()
+      //   let valueIterator = arr.values()
+      //   let keyValueIterator = arr.entries()
+      //   // 如果要迭代器对象,要使用for of
+      //   for (let key of keyIterator) {
+      //     console.log(key) //遍历的是arr中的下标(键)
+      //   }
+      //   for (let key of valueIterator) {
+      //     console.log(key) //遍历的是arr中的值
+      //   }
+      //   for (let key of keyValueIterator) {
+      //     console.log(key) //遍历的是arr中的键和值 [键, 值]
+      //   }
+
+      // 4. find和findIndex
+      //   let arr = ['a', 'b', 'c', 'd', 'e']
+      //   let arr = [{ name: 'hj' }, { name: 'ph' }, { name: 'tt' }]
+      // 返回指定元素
+      //   let res = arr.find(function (item, index) {
+      //     console.log(item, index)
+      //     // 当返回的结果是true的时候,后面就不会再遍历了.就将当前的item返回
+      //     return item.name === 'ph'
+      //   })
+      //   console.log(res)
+      // 返回下标
+      //   let index = arr.findIndex(function (item, index) {
+      //     return item.name === 'ph'
+      //   })
+      //   console.log(index)
+
+      // 5. includes
+      //   let arr = ['a']
+      //   let arr6 = [1, 2, 3, arr]
+      //   console.log(arr6.includes(1)) //true
+      //   console.log(arr6.includes(arr)) //false
+
+      // flat() 将多维数组转成一维数组
+      //   {
+      //     //二维数组
+      //     let arr = [1, 2, [3, 4]]
+      //     console.log(arr.flat())
+      //   }
+      //   {
+      //     //多维数组 想拉平 可以传入参数
+      //     let arr = [1, 2, [3, [5, 6, 7]]]
+      //     // 参数是几,就将数组向下降低几级维度
+      //     console.log(arr.flat(2))
+      //   }
+      //   {
+      //     //如果不知道自己的数组有多少层  那么可以传递infinity 代表无穷大
+      //     let arr = [1, 2, [3, [5, 6, 7]]]
+      //     // 参数是Infinity,直接变成一维
+      //     console.log(arr.flat(Infinity))
+      //   }
+
+      //   [{ arr: [] }, {}, {}]
+      //   [[]]
+    </script>
+  </body>
+</html>

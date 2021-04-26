@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // iterator原理
+      //   let arr = [1, 2, 3]
+      //   function Iterator() {
+      //     //用一个计数器，保存现在处理到哪里了
+      //     let index = 0
+      //     return {
+      //       next: () => {
+      //         if (index < arr.length) {
+      //           return {
+      //             value: arr[index++],
+      //             done: false,
+      //           }
+      //         } else {
+      //           return {
+      //             done: true,
+      //           }
+      //         }
+      //       },
+      //     }
+      //   }
+
+      //   //只要调用这个Iterator接口，就可以依次处理成员了
+      //   let it = Iterator(arr)
+      //   console.log(it)
+      //   console.log(it.next())
+      //   console.log(it.next())
+      //   console.log(it.next())
+      //   console.log(it.next())
+
+      //   let arr = [1, 2, 3, 4, 5]
+      //   //arr[Symbol.iterator] 就是一个函数块
+      //   console.log(arr[Symbol.iterator])
+      //   console.dir(arr[Symbol.iterator])
+
+      //   let it = arr[Symbol.iterator]()
+      //   //   //可以看出arr拥有Iterator接口  那我们手动调用它
+      //   console.log(it)
+      //   //   console.log(arr.values())
+      //   console.log(it.next())
+      //   console.log(it.next())
+      //   console.log(it.next())
+      //   console.log(it.next())
+      //   console.log(it.next())
+      //   console.log(it.next())
+      //   console.log(it.next())
+
+      //   let str = 'abc'
+
+      //   let it2 = str[Symbol.iterator]()
+      //   console.log(it2)
+      //   console.log(it2.next())
+      //   console.log(it2.next())
+      //   console.log(it2.next())
+      //   console.log(it2.next())
+
+      //   let arr = ['a', 'b', 'c', 'd']
+      //   for (let i of arr) {
+      //     //for of 得到的是值
+      //     console.log(i) //a b c d
+      //   }
+      //   for (let i in arr) {
+      //     //for in得到的是键名
+      //     console.log(i) //0 1 2 3
+      //   }
+
+      //   let str = 'abcde'
+      //   for (let i of str) {
+      //     console.log(i)
+      //   }
+
+      // 注意: 数组,字符串,set,map可以使用for of遍历,因为他们都继承了iterator接口, 但是Object不能,因为没有继承这个接口
+      let obj = {
+        name: 'lily',
+      }
+      for (let i of obj) {
+        console.log(i)
+      }
+    </script>
+  </body>
+</html>

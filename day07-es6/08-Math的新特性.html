@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      'use strict'
+      //求 一个数字的 n次方  是一个很大的需求
+      //   console.log(Math.pow(3, 3))
+      //   console.log(Math.pow(30, 10))
+
+      //   //es2016 提出了新的方法求一个值的n次方  那就是 ** 操作符
+      //   console.log(3 ** 3)
+      //   console.log(30 ** 10)
+
+      // 从右往左执行
+      //   console.log(3 ** (3 ** 3))
+      //   console.log(3 ** 27)
+
+      //书写二进制数字
+      //   let n1 = 0b00001111
+      //   console.log(n1) //15
+      // es6之前定义8进制的方式: 0开头
+      //   let n2 = 017 //严格模式下报错
+      //   console.log(n2)
+      // es6之后定义8进制的方式: 0o开头
+      //   let n3 = 0o17 //严格模式下也不会报错
+      //   console.log(n3)
+
+      const { log } = console
+      /*
+              Math.trunc()去除小数部分
+          */
+      //   log(Math.floor(1.33)) //1
+      //   log(Math.ceil(1.33)) //2
+      //   log(Math.trunc(1.33)) //1
+
+      //   log(Math.floor(-1.33)) //-2
+      //   log(Math.ceil(-1.33)) //-1
+      //   log(Math.trunc(-1.33)) //-1
+
+      /*
+         Math.sign() 判断一个数字的正数还是负数 还是0  或者是NaN
+         如果说是正数 则返回1  负数返回-1  0 返回0   NaN返回NaN
+      */
+      //   log(Math.sign(2.3)) //1
+      //   log(Math.sign(-1.3)) //-1
+      //   log(Math.sign(0)) //0
+      //   log(Math.sign(NaN)) //NaN
+      //   log(Math.sign(Infinity)) //1
+
+      /*
+          Math.sqrt()平方根
+          Math.cbrt()立方根
+      */
+      //   log(Math.sqrt(9))
+      //   log(Math.cbrt(27))
+
+      /*
+         Math.hypot() 求所有参数平方和的平方根
+      */
+      //   log(Math.hypot(4, 9, 16)) //Math.sqrt(4*4 + 9*9 + 16*16)
+      //   勾股定理  a的2次方  + b的2次方  = c的2次方
+      // 已知直角三角形两个直角边的长度是 3 和 4  求斜边的长度
+      //   log(Math.hypot(3, 4)) //5
+
+      //   console.log(Number.isFinite(Infinity)) // 判断是否是有限大的数
+      //   console.log(Number.isNaN(NaN)) // 判断是否是NaN
+      //   console.log(Number.isInteger(Infinity)) //判断是否是整数
+      //   console.log(Number.parseInt('123ab')) // 将字符串转换为对应的数值
+    </script>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="box">盒子</div>
+    <script>
+      let fn1 = function (x, y) {}
+      //定义箭头函数
+      //   let fn = () => {} //标准形式
+      // 只有一个形参,小括号可以省略
+      //   let fn = x => {console.log(x)}
+      // 如果有多个形参,小括号不能省略
+      //   let fn = (x, y) => {
+      //     console.log(x, y)
+      //   }
+      // 如果函数体中只有一行代码/表达式.就可以忽略花括号和return .
+      // 下面的代码,自动return x
+      // let fn = (x = 9, y) => x
+      //   let fn = function (x, y) {
+      //     return x
+      //   }
+
+      // console.log(fn())
+
+      let box = document.getElementById('box')
+      // box.onclick = function () {
+      //   // 注意: 箭头函数中,没有this.如果写了this.那就去找外层有this的函数中的this
+      //   setTimeout(() => {
+      //     console.log(this.innerText)
+      //   }, 2000)
+      // }
+
+      // box.onclick = () => {
+      //   // 注意: 箭头函数中,没有this.如果写了this.那就去找外层有this的函数中的this
+      //   setTimeout(() => {
+      //     // console.log(this.innerText)
+      //     // 如果是一堆箭头函数嵌套,都没有this,最终这个this指向window
+      //     console.log(this)
+      //   }, 2000)
+      // }
+
+      // 注意:箭头函数因为没有this,所以不能当做构造函数
+      // let Person = (name, age) => {
+      //   this.name = name
+      //   this.age = age
+      // }
+
+      // new Person('zs', 18)
+
+      // 箭头函数没有arguments
+      let f3 = () => {
+        console.log(arguments) //arguments is not defined
+      }
+      f3(1, 2, 3, 4, 5)
+    </script>
+  </body>
+</html>

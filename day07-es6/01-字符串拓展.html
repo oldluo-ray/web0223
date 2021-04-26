@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- emmet语法: div>p+span -->
+    <div>
+      <p>text</p>
+      <span>文本</span>
+    </div>
+    <script>
+      // 问题: es6之前,操作字符串,有哪些不好的地方 ?
+      //  1. 不能换行
+      //  2. 拼接字符串难度大,可读性差
+
+      // 模板字符串
+      //   let str1 = '<div>
+      //       <p>text</p>
+      //       <span>文本</span>
+      //   </div>'
+      //   ${}中可以写js表达式(只要有返回值的就是js表达式: 变量,常量,字面量,函数, 函数调用, 三元运算, 其他运算) .注意: for/while/do~while switch if这些不是表达式是语句
+      let text1 = '文本1'
+      let text2 = '文本2'
+      let str = `<div>
+                    <p>${[1, 2, 3]}</p>
+                    <span>${1 + 4}</span>
+                </div>`
+      console.log(str)
+
+      // 字面量:
+      //   let arr = new Array()
+      //   let arr = []
+      //   let obj = {}
+    </script>
+  </body>
+</html>
