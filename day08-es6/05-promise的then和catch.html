@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let promise = new Promise(function (resolve, reject) {
+        setTimeout(() => {
+          let data = [1, 2, 3]
+          // 注意: promise的状态只能被修改一次
+          reject('异步操作失败')
+          resolve(data) //无效
+        }, 1000)
+      })
+
+      promise.then(
+        // 这是一个异步的回调函数
+        (data) => {
+          // 当promise的状态变成成功的时候,这个回调函数会被调用
+          console.log('成功了', data)
+        },
+        // 这是一个异步的回调函数
+        (err) => {
+          // 当promise的状态变成失败的时候,这个回调函数会被调用
+          console.log('失败了', err)
+        }
+      )
+    </script>
+  </body>
+</html>

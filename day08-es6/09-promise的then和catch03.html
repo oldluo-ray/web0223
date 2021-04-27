@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let promise = new Promise(function (resolve, reject) {
+        setTimeout(() => {
+          let data = [1, 2, 3]
+          resolve(data)
+        }, 1000)
+      })
+
+      promise
+        .then(
+          // 这是一个异步的回调函数
+          (data) => {
+            // 当promise的状态变成成功的时候,这个回调函数会被调用
+            console.log('成功了', data)
+            return new Promise((resolve, reject) => {
+              // console.log(a)
+              reject('123')
+              // resolve(123)
+            })
+          }
+        )
+        .then(
+          (data) => {
+            // 链式调用之后,这个data接收的是上一次成功的回调函数的返回值
+            console.log('1成功了', data)
+            return 2
+          },
+          (err) => {
+            console.log('1失败了', err)
+          }
+        )
+        .then((data) => {
+          // 链式调用之后,这个data接收的是上一次成功的回调函数的返回值
+          console.log('2成功了', data)
+        })
+        .catch((err) => {
+          console.log('catch', err)
+        })
+    </script>
+  </body>
+</html>

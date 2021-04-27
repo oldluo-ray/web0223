@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 回调地狱: 回调函数嵌套比较深
+      //   setTimeout(() => {
+      //     console.log('a数据请求回来了~')
+      //     setTimeout(() => {
+      //       console.log('b数据请求回来了~')
+      //       setTimeout(() => {
+      //         console.log('c数据请求回来了~')
+      //       }, 3000)
+      //     }, 2000)
+      //   }, 1000)
+
+      // promise的基本使用: promise可以理解成一个容器,我们工作中的异步操作要写在这个容器中
+      // promise的具体的表现形式: 是一个js中全局的构造函数
+      // promise的回调函数可以接收到两个参数, 当异步操作成功,我们需要调用一下这个resolve(), 这时promise的状态就会被修改为成功, 如果异步失败了,那么就调用reject(),这时就会把promise的状态改成失败
+      // 注意: 传入到new Promise中的这个函数,是一个同步执行的函数,在new的时候,就直接被调用了
+      let promise = new Promise(function (resolve, reject) {
+        // 异步操作
+        setTimeout(() => {
+          // 一般用setTimeout模拟异步操作,时间到了,就表示异步执行成功了(fulfilled)
+          //   console.log('异步成功')
+          // 一般用setTimeout模拟异步操作,时间到了,也可以表示异步执行失败了(rejected)
+          console.log('异步失败了')
+          // 修改promise状态,将pending改成成功
+          //   resolve()
+          // 修改promise转台,将pendding改成失败
+          reject()
+          console.log(promise)
+        }, 1000)
+      })
+      console.log(promise) // 直接new的promise实例,他的状态一开始都是初始状态(pending)
+
+      // 同步执行的回调函数
+
+      //   function fn(a){
+      //     a()
+      //   }
+      //   fn(function(){
+      //       console.log(1)
+      //   })
+      //   console.log(2)
+
+      //   setTimeout(() => {
+      //       console.log(1)
+      //   }, 1000);
+      //   console.log(2)
+    </script>
+  </body>
+</html>

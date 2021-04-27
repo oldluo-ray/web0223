@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 生成器
+      // 大家不用去思考generator的实际用途. 要求大家,只需要掌握当前代码的执行过程即可
+      // 1. 定义了一个函数
+      function* gen() {
+        console.log(1)
+        yield '状态1'
+        console.log(2)
+        yield '状态2'
+        console.log(3)
+        yield '状态3'
+        console.log(4)
+        yield '状态4'
+        console.log('呵呵呵')
+        return 'end'
+      }
+
+      let it = gen() // 当我们调用了gen这个函数,如果是普通函数,函数体中代码就会正常执行.但是这是一个generator函数,所以即便调用这个函数,里面的代码也不会执行. 调用函数完毕之后,得到一个对象,继承了iterator接口
+
+      console.log(it.next()) // 当第一次调用next方法的时候,就会执行gen函数里面的代码, 执行的时候,会先执行yield之前的代码,然后将代码执行完毕之后,将yield后面的值返回,最后,暂停执行
+      console.log(it.next()) // 当第二次调用next方法的时候,就会从上一次暂停的位置继续往下执行.执行到下一个yield的之后,将yield对应的值,返回,代码暂停
+      console.log(it.next())
+      console.log(it.next())
+      console.log(it.next()) //这时,从上一次停止的位置开始,执行 console.log('呵呵呵'),然后将return 的值当做yield后面的值返回出来
+      console.log(it.next()) // 这时,已经没有代码可以执行了,返回一个对象.value的值是undefined
+    </script>
+  </body>
+</html>

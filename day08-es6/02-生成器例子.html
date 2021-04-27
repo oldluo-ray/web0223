@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">点击抽奖</button>
+    <script>
+      let oBtn = document.getElementById('btn')
+      let start = gen()
+      oBtn.onclick = function () {
+        start.next()
+      }
+      function draw(count) {
+        alert('还剩' + (count - 1) + '次机会')
+      }
+      function* gen(count) {
+        //..
+        yield draw(5)
+        //..
+        yield draw(4)
+        //..
+        yield draw(3)
+        //..
+        yield draw(2)
+        //..
+        yield draw(1)
+
+        return ''
+      }
+    </script>
+  </body>
+</html>

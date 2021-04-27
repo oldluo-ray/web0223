@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let promise = new Promise(function (resolve, reject) {
+        // 在执行promise容器中代码的时候,代码出错了,promise的状态立刻被修改为失败
+        // console.log(a)
+        setTimeout(() => {
+          let data = [1, 2, 3]
+          // 直接出错,promise状态没有被修改
+          // console.log(a)
+          reject(data)
+          //   resolve(data) //无效
+        }, 1000)
+      })
+
+      // then方法执行之后,得到了一个新的promise对象,不是原来的那个
+      // let promise1 = promise.then(
+      let promise1 = promise.then(
+        // 这是一个异步的回调函数
+        (data) => {
+          // 当promise的状态变成成功的时候,这个回调函数会被调用
+          console.log('成功了', data)
+          return new Promise(function (resolve, reject) {
+            resolve('test')
+            // reject()
+          })
+        },
+        // 这是一个异步的回调函数
+        (err) => {
+          // 当promise的状态变成失败的时候,这个回调函数会被调用
+          console.log('失败了', err)
+          return new Promise((resolve) => {
+            resolve(123)
+          })
+        }
+      )
+
+      let promise2 = promise1.then(
+        (data) => {
+          // 链式调用之后,这个data接收的是上一次成功的回调函数的返回值
+          console.log('1成功了', data)
+          return false
+        },
+
+        (err) => {
+          console.log('1失败了', err)
+          return new Promise((resolve, reject) => {
+            reject('890')
+          })
+        }
+      )
+
+      promise2.then(
+        (data) => {
+          // 链式调用之后,这个data接收的是上一次成功的回调函数的返回值
+          console.log('2成功了', data)
+        },
+
+        (err) => {
+          console.log('2失败了', err)
+        }
+      )
+    </script>
+  </body>
+</html>

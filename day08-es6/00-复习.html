@@ -1,0 +1,84 @@
+<!-- 
+1. 操作字符串
+
+	模板字符串 
+	let obj = {name: 'zs', age: 18} 
+	`<div>
+		<p>${obj.name}</p>
+		<span>{obj.age}</span>
+	</div>`
+
+	
+	字符串新增的方法
+		 trimStart() 去除前面的空格
+		 trimEnd()去除后面的空格
+		 startsWith() 判断是否以某些字符开头
+		 endsWith() 判断是否以某些字符结尾
+		 includes() 是否包含某些字符
+
+2. 拓展运算符(...)
+
+		拓展数组
+			合并数组  [...arr, ...arr1]
+			复制数组  [...arr]
+			字符串转数组  [...str]
+
+		拓展对象 
+			{...obj}
+
+3. 数组的新增的方法
+
+	想把伪数组转成数组 ?  Array.from
+	找到数组中的指定的元素? Array.prototype.find
+	找到数组中指定元素的下标? Array.prototype.findIndex
+	判断数组中是否有指定元素? Array.prototype.includes
+
+4. 函数的新特性
+
+	函数形参的默认值
+
+		function fn(a,b=10){}
+
+	如何接收剩余参数
+		function fn(a,b,...args){}  fn(1,2,3,4,5,6,7)
+
+	箭头函数
+		使用: 
+		let fn = (形参) => {}
+		如果只有一个形参: 小括号可以省略 
+		如果有多个形参: 小括号不可以省略 
+		如果函数体中只有一行代码: 可以忽略花括号, 并且自动return 这行代码
+
+		注意事项: 
+		1. 没有this 
+		2. 不能被new 
+		3. 没有arguments 
+
+5. 对象的新特性
+	对象简写
+	let obj = {
+		a: a,
+		b: b
+		c: function(){}
+	}
+
+	let obj = {
+		a,
+		b
+		c(){}
+	}
+
+	对象的属性名表达式
+	let obj = {
+		[变量]: 值
+	}
+
+6. Set的应用: 
+	数组去重
+		let arr = [1,2,3,2,4,3,4]
+		[...new Set(arr)]
+	字符串去重 
+		let str = '1223341'
+		[...new Set(str)].join('')
+
+-->
