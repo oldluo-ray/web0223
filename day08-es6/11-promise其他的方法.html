@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // const promise = new Promise((resolve, reject) => {
+      //   // resolve(111)
+      //   reject(222)
+      // })
+      // 1. promise变成成功/失败都触发，pending不触发
+      // 注意: data其实接收不到数据
+      //   promise.finally((data) => {
+      //     console.log(`finally(${data})`)
+      //   })
+      // 2. Promise.all([promise1, ...]) //传入n个promise对象，只有n个promise对象的状态都成功，才成功，只要有一个失败，就失败
+      //   let promise1 = new Promise((resolve) => {
+      //     resolve()
+      //   })
+      //   let promise2 = new Promise((resolve, reject) => {
+      //     resolve()
+      //   })
+      // 返回的是一个promise对象,如果数组中的promise都是成功的,则返回的也是成功的,否则就是失败的promise
+      // 未来会使用Promise.all去同时发送多个异步请求
+      //   let res = Promise.all([promise1, promise2])
+      //   console.log(res)
+
+      //   3. Promise.resolve() //返回一个成功状态promise对象
+      //   console.log(Promise.resolve(123))
+      //   4. Promise.reject() //返回一个失败状态promise对象
+      //   console.log(Promise.reject(123))
+      //   5. Promise.allSettled([promise1, ...])//传入n个promise对象，等n个promise对象状态全部发生变化，得到所有结果值
+      //   let res = Promise.allSettled([Promise.resolve(), Promise.reject()])
+      //   console.log(res)
+    </script>
+  </body>
+</html>

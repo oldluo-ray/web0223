@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">按钮</button>
+    <ul id="ul"></ul>
+    <script>
+      //   需求: 要执行一个异步操作,
+      //     异步操作执行之后,
+      //     要拿到异步操作的结果,
+      //     然后根据结果,
+      //     将数据渲染到页面上
+
+      // 在调试过程, 不想写获取元素的代码(根据元素的id,直接获取到元素)
+      // 但是这种写法在最终上线的时候,不要使用
+      //   btn.onclick = function () {
+      //     setTimeout(() => {
+      //       let arr = ['a', 'b', 'c']
+
+      //       //后续渲染页面的代码必须写在这个回调函数中
+
+      //     }, 2000)
+
+      //   }
+
+      btn.onclick = async function () {
+        // 1. 当getData返回promise对象的状态变成成功之后,await后面的代码才会执行
+        // 2. await 后面是promise对象,当promise对象成功,会将promise中成功的数据,返回出来
+
+        // 3. 假如异步操作失败了,会怎么样?
+        // 如果成功会执行后面代码, 但是如果promise失败了,后面代码不执行,为了提高用户体验,需要给用户一个提示. 关键就是提示的代码写在哪里. 写在try-catch中
+
+        try {
+          let res = await getData()
+          // 要在await之后,拿到成功的数据,然后动态渲染
+
+          let arr = res.map((item) => {
+            return `<li>${item}</li>`
+          })
+
+          ul.innerHTML = arr.join('')
+        } catch {
+          //如果上面代码出错了,会执行catch中的代码.如果代码没有报错,但是promise是失败的,也会执行catch中的代码
+          document.body.innerHTML = '<h1>网络错误,请稍后重试</h1>'
+        }
+      }
+
+      // 具体发送请求,获取数据的代码
+      function getData() {
+        return new Promise((resolve, reject) => {
+          console.log(a)
+          setTimeout(() => {
+            let arr = ['a', 'b', 'c']
+            resolve(arr)
+            // reject()
+          }, 1000)
+        })
+      }
+    </script>
+  </body>
+</html>

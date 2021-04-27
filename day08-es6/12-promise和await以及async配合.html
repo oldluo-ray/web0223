@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="api.js"></script>
+    <script>
+      //   需求: 当异步操作a完成之后, 执行异步操作b, b完成之后, 执行异步操作c
+
+      // 原来的写法: (回调地狱)
+      //   setTimeout(() => {
+      //     console.log('异步操作a执行完毕了')
+      //     setTimeout(() => {
+      //       console.log('异步操作b执行完毕了')
+      //       setTimeout(() => {
+      //         console.log('异步操作c执行完毕了')
+      //       }, 1000)
+      //     }, 1000)
+      //   }, 1000)
+
+      // 使用promise的写法:(还是会有回调地狱的问题.而且逻辑更加复杂)
+      //   new Promise((resolve) => {
+      //     setTimeout(() => {
+      //       console.log('异步操作a执行完毕了')
+      //       resolve([1, 2, 3])
+      //     }, 1000)
+      //   })
+      //     .then((data) => {
+      //       return new Promise((resolve) => {
+      //         setTimeout(() => {
+      //           console.log('异步操作b执行完毕了')
+      //           resolve(data)
+      //         }, 1000)
+      //       })
+      //     })
+      //     .then((data) => {
+      //       setTimeout(() => {
+      //         console.log('异步操作c执行完毕了', data)
+      //       }, 1000)
+      //     })
+
+      // 实际开发的写法: promise配合async和await
+
+      // 演变过程:
+
+      // 1. 把new Promise写在异步函数外面是不允许的.因为异步操作直接都执行了
+      //   let promise1 = new Promise((resolve) => {
+      //     setTimeout(() => {
+      //       console.log('异步操作a完成了')
+      //     }, 1000)
+      //   })
+      //   let promise2 = new Promise((resolve) => {
+      //     setTimeout(() => {
+      //       console.log('异步操作b完成了')
+      //     }, 1000)
+      //   })
+      //   let promise3 = new Promise((resolve) => {
+      //     setTimeout(() => {
+      //       console.log('异步操作c完成了')
+      //     }, 1000)
+      //   })
+
+      // 2. 应该把new Promie写在异步函数里面, await的后面
+      //   async function fn() {
+      //     await new Promise((resolve) => {
+      //       setTimeout(() => {
+      //         console.log('异步操作a完成了')
+      //         resolve()
+      //       }, 1000)
+      //     })
+      //     await new Promise((resolve) => {
+      //       setTimeout(() => {
+      //         console.log('异步操作b完成了')
+      //         resolve()
+      //       }, 1000)
+      //     })
+      //     await new Promise((resolve) => {
+      //       setTimeout(() => {
+      //         console.log('异步操作c完成了')
+      //         resolve()
+      //       }, 1000)
+      //     })
+
+      //     console.log('end')
+      //   }
+
+      // 3. 最终需要将new Promise封装起来(一定会将多个异步操作,封装成多个函数,在异步函数中调用这个函数,前面加上await)
+      async function fn() {
+        await a()
+        await b()
+        await c()
+      }
+
+      fn()
+    </script>
+  </body>
+</html>

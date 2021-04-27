@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 虽然使用try-catch包裹代码,不会让代码中的错误抛出去,程序也就不会停止.但是写了try-catch的代码的实行效率,是低于不写try-catch的代码的执行效率的
+      try {
+        console.log(1)
+
+        console.log('上面代码没有出错的时候,会执行到这里')
+      } catch (err) {
+        // try中的代码,如果出错了,代码执行会直接进入到catch中,执行catch中的代码
+        console.log(err)
+      } finally {
+        // 不管try里面的代码,是否出错,finally里面的代码都会执行
+        console.log('后面要执行的代码')
+      }
+
+      console.log('try结构外的代码也正常执行')
+    </script>
+  </body>
+</html>

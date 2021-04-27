@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1. Promise是一个构造函数, 用来包裹异步操作
+      // 2. 使用Promise,可以解决回调地狱的问题
+      // 3. let promise = new Promise(function(){ })
+      //    这个函数是一个同步调用的函数. 接收两个参数: 第一个是resolve(将promise的状态由未定义改为成功), 第二个是reject(将promise的状态由未定义改为失败)
+      // 4. promise的状态只能修改一次
+      // 5. promise.then(promise成功调用的函数, promise失败调用的函数)
+      // 成功的函数,可以接收到调用resolve时的实参, 失败的回调,可以接收到调用reject时的实参
+      new Promise((resolve, reject) => {
+        // 异步代码
+        resolve(参数) // 成功
+        reject(参数) // 失败
+      })
+        .then(
+          (data) => {},
+          (err) => {}
+        )
+        .then(
+          (data) => {},
+          (err) => {}
+        )
+      // 6. 如果在执行同步回调的时候,直接报错了,promise直接修改为失败的状态
+      // 7. then方法返回一个新的promise对象,所以可以链式编程下去
+      // 8. 新的promies的状态由上一个promise成功/失败之后执行的代码决定:
+      // 8.1 如果没有写return, 下一个promise直接就是成功的
+      // 8.2 如果写了return, return的是一些除promise以外的数据,则下一个也是成功的promise
+      // 8.3 如果直接报错了,下一个就是失败的promise
+      // 8.4 如果返回的又是一个promise,那么这个promise决定了下一个promise的状态
+      // 8.5 如果返回的又是一个promise, 但是这个promise的同步回调中报错,则这个promise就是失败,下一个也是失败的状态
+      // 9. 如果要写catch方法,一般也在then后面.而且写了catch.那么then中的第二个回调一般就不写了
+    </script>
+  </body>
+</html>

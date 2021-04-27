@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   之前定义函数,都属于同步函数,必须要等到函数体中的代码执行完毕,函数调用后的代码才会执行
+      //   function fn() {
+      //     console.log(1)
+      //     console.log(2)
+      //     console.log(3)
+      //   }
+      //   fn()
+      //   console.log(4)
+
+      // es6之后,函数加前缀async 就变成了一个异步的函数了
+      //   async function fn() {
+      //     console.log(1)
+      //     // 当代码执行到await的时候,函数调用暂缓执行(可以简单理解成函数调用完毕了,后面就直接调用fn()后面的代码. 当后面的主线程代码都执行完毕,才回过头来执行await后面的)
+      //     await Promise.resolve()
+      //     console.log(2)
+      //   }
+      //   fn()
+      //   console.log(3)
+
+      //===========================================================
+
+      // 异步函数,返回的结果也是一个成功的promise(了解)
+      //   async function fn() {
+      //     console.log(1)
+      //     // return的结果就是成功的promise的值
+      //     return 123
+      //   }
+
+      //   console.log(fn())
+
+      //==============================================================
+      //async取代Generator函数的星号*，await取代Generator的yield
+      // async function fn() {
+      //   await new Promise((resolve) => {
+      //     setTimeout(() => {
+      //       console.log('a异步操作完成')
+      //       resolve()
+      //     }, 1000)
+      //   })
+      //   console.log(2)
+      //   await new Promise((resolve) => {
+      //     setTimeout(() => {
+      //       console.log('b异步操作完成')
+      //       resolve()
+      //     }, 1000)
+      //   })
+      // }
+      // fn()
+      // console.log(1)
+
+      // 上面的代码,执行的效果类似于下面的代码:
+      // function* fn() {
+      //   yield setTimeout(() => {
+      //     console.log('a异步操作完成')
+      //     it.next()
+      //   }, 1000)
+      //   console.log(2)
+      //   yield setTimeout(() => {
+      //     console.log('b异步操作完成')
+      //     it.next()
+      //   }, 1000)
+      // }
+      // let it = fn()
+      // it.next()
+      // console.log(1)
+
+      //================================================================
+
+      // async function fn() {
+      //   // 不是promise,默认成功,往下执行
+      //   // let res = await Promise.reject()
+      //   // console.log(2)
+      //   // console.log(res)
+      //   console.log(await Promise.reject())
+      // }
+      // console.log(fn())
+      // console.log(1)
+      //=====================================================
+      // async function fn() {
+      //   console.log('fn函数执行了')
+      //   await 123
+      //   await setTimeout(() => {
+      //     console.log(222)
+      //   }, 1000)
+      //   // 一个异步函数执行完毕了,如果没有return promise, 那么默认就是返回一个成功的promise. 值为undefind
+      // }
+      async function fn() {
+        console.log('333')
+        const re2 = await new Promise((resolve, reject) => {
+          setTimeout(function () {
+            console.log(222)
+            // reject('heng')
+            resolve('test')
+          }, 2000)
+        })
+        console.log(111)
+        console.log(re2)
+        return 'hello' //返回成功结果值
+      }
+      const re = fn()
+      re.catch((error) => {
+        console.log(error)
+      }) //解决await的reject状态报错
+      re.then((data) => {
+        console.log(data)
+      }) //data是成功结果 函数返回值
+      console.log(re)
+    </script>
+  </body>
+</html>
