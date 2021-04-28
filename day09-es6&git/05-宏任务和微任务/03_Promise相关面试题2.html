@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>12_Promise相关面试题2</title>
+  </head>
+  <body>
+    <script>
+      // 回调函数:
+      //   同步回调: 在主线程中立刻就执行
+      //   异步回调: 推入到队列中
+      /* 
+				宏：[]
+				微：[]
+        控制台输出: 2 5 3 4 1
+			*/
+      setTimeout(() => {
+        console.log(1)
+      }, 0)
+      new Promise((resolve) => {
+        console.log(2)
+        resolve()
+      })
+        .then(() => {
+          console.log(3)
+        })
+        .then(() => {
+          console.log(4)
+        })
+      console.log(5)
+    </script>
+  </body>
+</html>

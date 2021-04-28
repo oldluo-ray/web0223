@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 传统的引入方法 
+      注意: 在js中,只有函数和块会形成局部作用域. 即便是写了多个script标签,那不再函数和块中的代码,就都在全局,可以正常访问
+      一定要在上面的script标签的主线程代码执行完毕,后面的script的代码才会执行
+    -->
+    <!-- <script src="test.js">
+      //   const test = '123'
+      //   console.log(test)
+    </script>
+    <script>
+      console.log(test)
+    </script> -->
+
+    <script>
+      // es6之后,新增了一个import函数,可以在一个js中,引入另一个js
+      // 如果使用import()引入js文件,引入的文件中的变量/常量不再全局
+      const promise = import('./test.js')
+      console.log(promise)
+      console.log(test)
+    </script>
+  </body>
+</html>

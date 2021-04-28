@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 在js中,如果要批量创建对象,首选使用构造函数
+      // 当一个函数,要被用来new的时候,这个函数就可以被叫做构造函数,一般要求首字母大写
+      function Person(name, age) {
+        // name和age属性,其实加到了实例身上.只有实例可以访问
+        this.name = name
+        this.age = age
+        // 对象属性的值是函数,所以人为称为方法
+        // 属性和方法统称为成员
+        // this.sayhi = function () {
+        //   console.log(`大家好,我是${this.name},我挣的很多`)
+        // }
+      }
+
+      // 注意: 上面的写法,会导致每一个实例对象,都拥有相同的方法,非常占用内存
+      // 所以要将独有的属性添加在实例身上, 共有的属性,加在原型上
+      // 最终得到一个简单粗暴的结论: 属性加到实例上, 方法加到原型上
+      Person.prototype.sayhi = function () {
+        console.log(`大家好,我是${this.name},我挣的很多`)
+      }
+
+      // 又有一个构造函数 Student
+      // 继承的目的: 是为了在写的新的构造函数的时候,少些一些代码,但是最终属性也都有
+      // 比如当前: 不想写name和age, 但是创建出来的实例也要有name和age
+      function Student(name, age, score) {
+        // 使用借用构造函数继承,来继承属性
+        Person.call(this, name, age)
+        this.score = score
+      }
+      // 除了要继承属性,还要继承方法.继承方法,主要使用原型继承
+      Student.prototype = new Person()
+
+      let p1 = new Person('zs', 29)
+      let zh = new Person('zh', 29)
+      let st = new Student('wb', 12, 100)
+      console.log(p1)
+      console.log(st)
+      st.sayhi()
+      p1.sayhi()
+      zh.sayhi()
+      //   console.dir(Person)
+    </script>
+  </body>
+</html>

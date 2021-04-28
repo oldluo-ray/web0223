@@ -1,0 +1,72 @@
+<!-- 
+   
+    1. promise是什么
+        就是一个构造函数,是一个异步容器(包裹异步代码)
+        作用: 解决回调地狱的问题
+    2. promise的基本使用
+        let promise = new Promise(function(resolve, reject){
+            注意:这个函数是同步回调,new Promise的时候,立刻执行
+            异步操作
+            如果异步操作成功 需要调用resolve(值)
+            如果异步操作失败 需要调用reject(值)
+        })
+
+        promise实例有三个状态: 未定义(pending) 成功(fulfilled) 失败(rejected)
+        注意: promise的状态只能修改一次
+
+    3. promise的then方法
+        promise.then((value)=>{},(err)=>{})
+        第一个回调: 当promise成功,会被调用
+        如果promise.then没有链式调用,value值就是promise成功的值
+        如果promise.then链式编程了,后面的then的value的值,就是上一个promise中返回的结果
+        promise.then会返回一个新的promise对象
+        promise.then((value)=>{
+            这个value是promise成功的值
+        }).then((value)=>{
+            这个value是上一次then成功或失败的时候执行的回调的返回值
+            如果上一次调用返回的是非promise对象,则返回什么这里就获取到什么
+            如果上一次调用返回的是promise兑现,则根据promise对象的状态来决定执行第一个,还是第二个的回调.如果新的promise成功了,这里就可以获取到新的promise成功的值
+        })
+        第二个回调: 当promise失败,会被调用
+
+    4. promise和async以及await配合使用
+        //需求: 执行一个异步操作,异步操作完成之后,打印一句话
+        4.1 新建一个函数,封装promise对象
+        function asyncFn(){
+            return new Promise(function(resolve,reject){
+                setTimeout(()=>{
+                    resolve(data)
+                }, 1000)
+            })
+        }
+        async function fn(){
+            await asyncFn()
+            console.log('异步成功之后的代码')
+        }
+
+        实际开发使用时注意点: 
+        1. promise的同步回调中,代码出错了,promise直接修改失败
+        2. await 后面的代码,必须要等到promise成功才执行,如果promise失败了,后面的代码就不执行
+        3. await 有返回值, 返回值就是promise成功的值
+         
+        
+    5. async
+        用来定义一个异步函数, 是生成器的语法糖. 一般和await配合使用
+        async function fn(){} 
+        fn()  返回一个成功的promise 
+        如果异步函数里面的所有的代码都执行完毕了.promise才是成功的promise. 异步函数中返回什么,promise的值就是什么
+
+    6. await
+         await的代码,必须被async函数包裹 
+         await 后面如果是非promise, 返回的就是这个具体的值
+         await 后面 如果是promise. 则promise成功才会有返回值 
+         当执行异步函数的的时候,遇到await的时候,其他函数执行会被暂缓(简单当前函数被调用完毕了),然后会继续执行主线程中后面的代码,主线程代码全部执行,才会执行await后面的代码
+         
+    7. promise的其他方法
+        promise.catch() 捕获失败的promise. 如果写了catch, then函数里面就不要写第二个参数了
+        promise.finally() 不管成功和失败,都会触发里面的回调
+        Promise.all([promise,promise..]) 一般用来同时执行多个异步操作.当所有的promise都是成功的,返回的promise就是成功的.如果有一个失败.返回的promise就是失败的
+        Promise.resolve() 返回一个成功的promise
+        Promise.reject() 返回一个失败的promise
+
+ -->

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 总结: 使用class 和 extends的 注意点:
+      //  1. 使用constructor的目的是为了给实例添加属性,可以利用简写添加,忽略construtor(sex = '男'),只是这样值就是固定的
+      //  2. say(){}是将函数添加到了原型上, 如果写成 say = ()=>{} 那么这个方法是添加到了实例上
+      // 3. 如果子类继承了父类, 子类也可以不写constructor,不写也可以继承.那是因为js底层执行的时候,自动帮我们加上去constructor(){super()}
+      // 4. 在子类中如果写了constructor了,就必须在第一行写super() 否则报错
+      class Person {
+        // constructor就相当于是 Person构造函数
+        //如果不需要,可以不写
+        constructor(name, age) {
+          //属性加到实例上
+          this.name = name
+          this.age = age
+        }
+        // 给实例添加属性的简写的形式:
+        // 注意: 可以按照这种方式简写,但是无法设置动态的值
+        // 也可以被继承
+        sex = '男'
+
+        // 这种写法: 方法直接加到了原型上
+        sayhi() {
+          console.log('你好,我是' + this.name)
+        }
+        // 这种写法: 方法直接添加到了实例上面
+        // 也可以被继承
+        say = () => {
+          console.log(this.sex)
+        }
+      }
+
+      // 学生类
+      // 使用extends 让Student继承Person
+      // 自动继承了原型上的所有方法, 利用super继承了属性
+      class Student extends Person {
+        // 如果子类,不写constructor,但是继承父类,底层还是会自动帮你加一个constructor
+        constructor(name, age, score) {
+          // 一个子类可以不写constructor.但是如果写了,constructor里面必须有super().并且必须在constructor的第一行
+          // super(name, age) //这个super函数指向的其实就是Person的constructor函数
+          super(name, age)
+          this.score = score
+        }
+      }
+
+      let p1 = new Person('zs', 18)
+      let st1 = new Student('ls', 20, 100)
+      console.log(p1)
+      console.log(st1)
+      p1.sayhi()
+      p1.say()
+      st1.sayhi()
+      st1.say()
+    </script>
+  </body>
+</html>
