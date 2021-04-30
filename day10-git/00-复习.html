@@ -1,0 +1,48 @@
+<!-- 
+    1. 类的使用
+    需求1: 定义一个Person类,实例上要有name属性, 原型上要有say方法
+    class Person {
+        constructor(name){
+            this.name = name
+        }
+        name = 值
+
+        say(){}
+        say = () => {}
+    }
+
+    需求2: 定义Student类,学生类也有name,还有一个score.如何定义?
+
+    class Student extends Person {
+        constructor(name, score){
+            super(name) //如果继承父类,super必须调用, 指向父类的构造器
+            this.score = score
+        }
+    }
+
+    2. 宏队列和微队列
+
+        宏队列: 宏任务 定时器回调  事件处理函数
+        微队列: 微任务 promise的回调
+        
+        执行顺序: 主线程 ==> 微队列的任务 ==> 宏队列的任务
+
+        同步回调:  在主线中立即执行
+        异步回调:  先存放到队列中,主线程执行完毕,才会按照顺序执行
+
+
+
+    3. 版本控制工具
+        作用: 版本回退, 备份代码, 多人协作开发
+        分类: 
+            集中式: svn
+            分布式: git
+
+
+        cd 切换命令行窗口的路径 
+        cd ../ 返回上一层
+        cd 路径 进入下一层 
+        ctrl + c 退出命令行窗口中正在运行的程序
+        clear / cls
+    
+ -->
