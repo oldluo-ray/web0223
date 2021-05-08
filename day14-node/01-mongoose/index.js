@@ -82,10 +82,20 @@
     //   console.log(err, data)
     // })
 
-    // 删除
-    usersModel.deleteOne({}, (err, data) => {
-      console.log(err, data)
+    // // 删除
+    // usersModel.deleteOne({}, (err, data) => {
+    //   console.log(err, data)
+    // })
+
+    // 了解:
+    // 如何创建document对象
+    // 创建一条数据,但是数据还没有插入到集合中
+    const userDocument = new usersModel({
+      name: '呵呵呵',
+      age: '20',
     })
+    // 调用save方法可以添加到集合中
+    userDocument.save()
   } catch (error) {
     console.log('mongodb数据库连接失败', error)
   }

@@ -37,3 +37,8 @@
   const users = await userModel.find()
   console.log(users)
 })()
+
+// 1. cj项目
+// 2. 初始化项目
+// 3. 下载mongoose
+// 4. 分成三个文件(连接数据库的文件, 创建model的文件, 增的文件)
