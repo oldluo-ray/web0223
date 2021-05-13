@@ -27,13 +27,14 @@ router.post('/login', async (req, res) => {
   if (user) {
     // 登录成功之后,给浏览器发送小卡片
     // 这行代码其实就是修改了响应头
-    // cookie的有效期:
-    // 1. 如果没有指定cookie的有效期,那么cookie的有效期默认就是一个会话的时间
-    // 会话时间: 从在浏览器发出请求,拿到cookie开始,直到关闭浏览器
-    // 2. 自定义有效期 res.cookie(键, 值, {maxAge: 有效期单位是毫秒})
-    
 
-    res.cookie('userId', user._id, { maxAge: 1000 * 60 * 10 })
+    // 登录成功之后,要将用户id,存储到session中
+    // 这行代码做的事情:
+    // 1. 在session中开辟空间,存储用户id
+    // 2. 生成了一个sessionid
+    // 3. 在响应头中添加一个set-cookie.让浏览器将sessionid存到cookie中
+    req.session.userId = user._id
+
     // console.log(user)
     // 登录成功
     // 成功要跳转到一个登录之后才可以访问的页面(首页)

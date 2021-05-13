@@ -6,7 +6,9 @@ const uiRouter = express.Router()
 
 // 响应首页
 uiRouter.get('/home', async (req, res) => {
-  if (req.cookies.userId) {
+  // 当访问首页/详情页时, 执行req.session.userId的时候,服务器会自动从session中,根据上传上来的sessionid,去找对应的数据,找到了,就表示登录成功,否则就是没有登录
+  console.log(req.session.userId)
+  if (req.session.userId) {
     // 要获取到当前用户的信息
     // 想在这里拿到当前登录的用户信息,就需要去数据库中查找,但是查找,需要有一个查询条件
     // console.log(req.query)
@@ -30,7 +32,8 @@ uiRouter.get('/detail', (req, res) => {
   // 没有了req.cookies就拿到的是一个空对象
 
   // console.log(req.cookies)
-  if (req.cookies.userId) {
+  console.log(req.session.userId)
+  if (req.session.userId) {
     //说明之前登录过,登录过就有cookie信息
     res.render('detail', {})
   } else {
