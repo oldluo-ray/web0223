@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <h1>注册页面</h1>
+    <form action="http://127.0.0.1:5000/register" method="POST">
+      用户名: <input type="text" name="username" />
+      <span id="tip-username"></span>
+      <br />
+      密码: <input type="password" name="password" />
+      <span id="tip-password"></span><br />
+      确认密码: <input type="password" name="repassword" />
+      <span id="tip-repassword"></span><br />
+      <input type="submit" value="注册" />
+    </form>
+
+    <!-- http://127.0.0.1:5000/login -->
+    <!-- http://127.0.0.1:5000/login/index.html -->
+
+    <!-- 相对上面的html文件,请求js.是下面这个url地址 -->
+    <script src="./index.js"></script>
+    <!-- http://127.0.0.1:5000/login/index.js -->
+  </body>
+</html>

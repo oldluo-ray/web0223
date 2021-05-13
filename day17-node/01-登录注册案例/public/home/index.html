@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>首页</h1>
+    <h3 id="h3">欢迎您: xxx</h3>
+  </body>
+  <script>
+    // window.location指向了浏览器的地址栏
+    // console.log(window.location)
+    // console.log()
+    let username = location.search.split('=')[1]
+    console.log(username)
+    // 由于username是中文,所以在和服务器交互过程中,会自动将中文践行url编码时
+    // 所以要转成中文,还要进行解码 decodeURI(url编码后的字母) 返回解码之后的中文
+    username = decodeURI(username)
+    document.getElementById('h3').innerText = '欢迎您: ' + username
+  </script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="ul"></ul>
+    <script>
+      const xhr = new XMLHttpRequest()
+      xhr.open('get', 'http://127.0.0.1:5000/getData')
+      xhr.send()
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+          if (xhr.status == 200) {
+            // console.log(xhr.responseText)
+            let data = JSON.parse(xhr.responseText)
+            console.log(data)
+
+            data.forEach((element, index) => {
+              let li = document.createElement('li')
+              li.textContent = element
+              ul.appendChild(li)
+            })
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
