@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <form action="http://127.0.0.1:5000/findUser" method="POST" enctype="application/x-www-form-urlencoded">
+      用户名: <input type="text" />
+      <input type="submit" />
+    </form> -->
+    <input type="text" id="input" /><span id="span"></span>
+    <script>
+      // 在浏览器中可以发送请求的方式有多少种:
+
+      // 1. 直接在浏览器的地址栏输入url地址,按下回车键发送请求 get
+      // 2. form 可以发送get也可以发送post
+      // 3. a标签, 点击a标签,将href的url,添加到地址栏,自动回车 get
+      // 4. link 也会发送请求 get 一般用来请求css文件和favicon.ico
+      // 5. script 也会发送请求 get 一般用来请求js文件
+      // 6  img 也会发送请求也是 get请求, 一般用来请求图片文件
+      // 7. window.href = url 其实跟地址栏是一样的
+
+      // ajax技术: 可以实现局部更新
+      // 1. 不会切换页面
+      // 2. ajax发送请求是异步的
+      // <students>
+      //    <student>
+      //       <name>zs</name>
+      //       <age>18</age>
+      //     </student>
+      //    <student>
+      //       <name>ls</name>
+      //       <age>20</age>
+      //     </student>
+      //   <students>
+
+      input.oninput = function () {
+        const value = this.value
+        //将value发送给服务器
+        // 1. 创建xhr对象
+        const xhr = new XMLHttpRequest()
+        // 2. 设置请求方式和请求地址
+        xhr.open('post', 'http://127.0.0.1:5000/findUser')
+
+        // 3. 设置请求头
+        xhr.setRequestHeader(
+          'content-type',
+          'application/x-www-form-urlencoded'
+        )
+
+        // 3. 设置请求主体并发送请求
+        xhr.send('username=' + value)
+
+        xhr.onreadystatechange = function () {
+          // 表示请求完成了
+          if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+              // 表示请求成功了
+
+              console.log(xhr.responseText)
+              if (xhr.responseText === 'ok') {
+                //表示用户名可以用
+                span.textContent = '可用'
+              } else {
+                //表示用户名不可用
+                span.textContent = '不可用'
+              }
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
