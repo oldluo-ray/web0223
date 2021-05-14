@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">按钮</button>
+    <script src="./myAjax-promise.js"></script>
+    <script>
+      btn.onclick = async function () {
+        const promiseValue = await myAjax({
+          url: 'http://127.0.0.1:5000/xx',
+          // type: 'post',
+          data: {
+            username: 'zs',
+            age: 18,
+            info: '呵呵',
+          },
+        })
+
+        console.log(promiseValue)
+      }
+    </script>
+  </body>
+</html>

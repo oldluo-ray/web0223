@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">按钮</button>
+    <script src="./myAjax.js"></script>
+    <script>
+      btn.onclick = function () {
+        myAjax({
+          url: 'http://127.0.0.1:5000/xxx',
+          // type: 'post',
+          data: {
+            username: 'zs',
+            age: 18,
+            info: '呵呵',
+          },
+          // dataType: 'text',
+          // timeout: 2000,
+          success: function (data) {
+            console.log(data)
+          },
+          error: function (xhr) {
+            console.log('失败了', xhr)
+          },
+          complete: function () {
+            console.log('完成了')
+          },
+          beforeSend: function () {
+            console.log('发送之前')
+            // return false
+            return 0
+          },
+        })
+      }
+    </script>
+  </body>
+</html>

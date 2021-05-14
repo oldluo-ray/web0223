@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">按钮</button>
+    <script src="./jquery-1.12.4.min.js"></script>
+    <script>
+      $('#btn').on('click', () => {
+        // 发送ajax请求
+        $.ajax({
+          url: 'http://127.0.0.1:5000/xxx', // 配置请求地址
+          // type: 'post', // 请求方式, 默认就是get
+          data: {
+            // data是要上传的数据,不管是get还是post,都是写在data里面
+            username: 'zs',
+            age: 18,
+          },
+          // dataType: 'text', //默认值就是json. 如果后台返回的数据是json格式的字符串,就自动帮忙我们把字符串转成js对象
+          timeout: 2000, //超时事件,单位是毫秒
+          // 响应成功回调函数就会被调用:data就是响应主体中的数据
+          success: function (data) {
+            console.log(data)
+          },
+          // 请求失败会调用. 接收的是一个xhr对象
+          error: function (xhr) {
+            console.log('请求失败', xhr)
+          },
+          // 在请求发送之前会触发
+          beforeSend: function () {
+            console.log('请求发送之前会触发')
+            // 如果return true,就表示继续发送请求
+            // 如果return false, 请求就不会发送了
+            return true
+          },
+          complete: function () {
+            // 当请求完成的时候触发
+            // 失败也算完成
+            // 只要请求发出去了,不管是成功还是失败,多会触发
+            console.log('响应完成')
+          },
+        })
+      })
+    </script>
+  </body>
+</html>

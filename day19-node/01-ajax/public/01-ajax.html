@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">按钮</button>
+
+    <script>
+      const btn = document.getElementById('btn')
+      btn.onclick = function () {
+        //   1.创建xhr对象
+        const xhr = new XMLHttpRequest()
+        // 2. 设置请求首行
+        // xhr.open('请求方式', '请求的url地址')
+        // xhr.open('post', 'http://127.0.0.1:5000/xxx')
+        // console.log(xhr.readyState)
+        xhr.open('get', 'http://127.0.0.1:5000/xxx?username=zs')
+        // console.log(xhr.readyState)
+
+        // 3. 设置请求头 (为了描述请求主体的数据是什么格式)
+        // 如果是get请求,就不需要设置请求头
+        // 如果是post请求,就需要设置请求头. (如果post请求,没有设置请求头,这次请求也可以正常发出去,服务器也可以正常响应.但是post请求要上传的数据服务器就拿不到了)
+        // xhr.setRequestHeader('键', '值')
+        // xhr.setRequestHeader(
+        //   'content-type',
+        //   'application/x-www-form-urlencoded'
+        // )
+
+        // 4. 设置请求主体并且发送请求
+        // 如果是get请求, 没有请求主体
+        xhr.send(null)
+        // 如果是post请求,有请求主体. 数据格式是有要求的,必须写成键=值&键=值
+        // xhr.send('username=zs')
+
+        // 接收响应(只要服务器处理了,其实就已经响应给浏览器了.这里说的接收响应,其实表达的是,需要在代码中通过js,从浏览器那里获取响应回来的数据)
+
+        // 注意:ajax请求是异步的,所以什么时候响应成功了,我们不知道
+        // console.log(xhr.responseText)
+        // 如何监听请求和响应的过程:
+        // xhr.readyState 这个属性的值会自动变化. 值分别是0,1,2,3,4
+        // 0 表示open方法还没调用
+        // 1 表示open方法调用了
+        // 2 表示接收响应头的数据了
+        // 3 表示接收响应主体的数据了
+        // 4 表示所有数据接收完毕(响应完毕)(不代表成功)
+        //这个事件可以监听xhr.readyState的变化
+        xhr.onreadystatechange = function () {
+          // console.log(xhr.readyState)
+          if (xhr.readyState === 4) {
+            //表示响应完成了
+            // xhr.status就是拿到响应头中的状态码
+            if (xhr.status === 200) {
+              //响应成功
+              //获取响应主体的数据
+              console.log(xhr.responseText)
+              let result = JSON.parse(xhr.responseText)
+              console.log(result)
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
