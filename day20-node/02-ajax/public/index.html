@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">按钮</button>
+    <script>
+      // 同源策略:
+      //  1. 是浏览器的安全策略(防止恶意网站窃取信息)
+      //  2. 同源策略规则: 判断ajax请求的url和发送ajax的网页的url. 他们的协议和域名以及端口号,是否完全相同,如果相同就是同源就认为是安全的.如果有一个不一样,就认为不同源,就不是安全的
+      //  3. 同源策略主要限制了什么呢? ajax还有cookie
+      //  4. 跨域: 给不同源的地址发送ajax请求
+      btn.onclick = function () {
+        const xhr = new XMLHttpRequest()
+        xhr.open('get', 'http://127.0.0.1:5000/test')
+        xhr.send()
+      }
+    </script>
+  </body>
+</html>

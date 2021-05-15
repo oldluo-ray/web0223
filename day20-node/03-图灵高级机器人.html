@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ajax</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f7f7f7;
+      }
+
+      h3 {
+        text-align: center;
+      }
+
+      .chatbox {
+        width: 500px;
+        height: 500px;
+        margin: 0 auto;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        border-radius: 5px;
+      }
+
+      .messages {
+        height: 350px;
+        padding: 20px 40px;
+        box-sizing: border-box;
+        border-bottom: 1px solid #ccc;
+        overflow: scroll;
+      }
+
+      .messages h5 {
+        font-size: 20px;
+        margin: 10px 0;
+      }
+
+      .messages p {
+        font-size: 18px;
+        margin: 0;
+      }
+
+      .self {
+        text-align: right;
+      }
+
+      .other {
+        text-align: left;
+      }
+
+      .form {
+        height: 150px;
+      }
+
+      .form .input {
+        height: 110px;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+
+      .form .btn {
+        height: 40px;
+        box-sizing: border-box;
+        border-top: 1px solid #ccc;
+      }
+
+      .form textarea {
+        display: block;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        border: none;
+        resize: none;
+        outline: none;
+        font-size: 20px;
+      }
+
+      .form input {
+        display: block;
+        width: 100px;
+        height: 30px;
+        margin-top: 5px;
+        margin-right: 20px;
+        float: right;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h3>高级智能机器人</h3>
+    <div class="chatbox">
+      <!-- 聊天内容 -->
+      <div class="messages">
+        <!-- <div class="self">
+        <h5>我说</h5>
+        <p>你好</p>
+      </div>
+      <div class="other">
+        <h5>对方说</h5>
+        <p>你好</p>
+      </div> -->
+      </div>
+      <div class="form">
+        <div class="input">
+          <textarea></textarea>
+        </div>
+        <div class="btn">
+          <input type="button" value="发送" id="btn" />
+        </div>
+      </div>
+    </div>
+    <script>
+      // 1. 获取元素,
+      const btn = document.getElementById('btn')
+      const textarea = document.querySelector('.input textarea')
+      const messages = document.querySelector('.messages')
+      // 2. 给btn注册点击事件
+      btn.onclick = function () {
+        // 3. 获取文本域中自己说的化
+        const value = textarea.value.trim()
+        // 4. 如果用户没有输入,后面的代码不执行
+        if (!value) return
+
+        // 5.清空文本域
+        textarea.value = ''
+
+        // 6. 创建元素,把自己说的说,渲染到聊天框中
+        let date = Date.now()
+        let myStr = `<div class="self" id="${date}">
+                        <h5>我说</h5>
+                        <p>${value}</p>
+                      </div>`
+
+        // 7. 将myStr的标签,渲染到类名为messages的div中
+        // 注意: 是+= 不是 = 因为不能覆盖原来的内容
+        messages.innerHTML += myStr
+
+        // 注意: scrollIntoView()这个方法是dom对象的方法,让谁进入到可视区,就应该使用谁来调用这个方法
+
+        const self = document.getElementById(date)
+
+        self.scrollIntoView()
+
+        // 8. 将我说的内容,发送给图灵机器人
+        const xhr = new XMLHttpRequest()
+        xhr.open('post', 'http://www.tuling123.com/openapi/api')
+        xhr.setRequestHeader(
+          'content-type',
+          'application/x-www-form-urlencoded'
+        )
+        xhr.send(
+          `key=51f1d94f18c54c3c8b2555119f59a937&info=${value}&userid=335220`
+        )
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+              // console.log(xhr.responseText)
+              let result = JSON.parse(xhr.responseText)
+              // console.log(result)
+              // 9. 根据响应的内容,动态创建元素,添加到页面上
+              let date = Date.now()
+              let otherStr = ` <div class="other" id="${date}">
+                        <h5>对方说</h5>
+                        <p>${result.text}</p>
+                      </div>`
+
+              messages.innerHTML += otherStr
+              let other = document.getElementById(date)
+              other.scrollIntoView()
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

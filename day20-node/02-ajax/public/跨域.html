@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 请求发送出去之后,响应成功之后,这个函数会被调用
+      function fn(data) {
+        console.log(data)
+
+        //
+      }
+    </script>
+    <script src="http://127.0.0.1:5000/test?callback=fn">
+      // 注意: 后端返回的是一个'ok'.当在这个script标签中要执行的时候,会自动将''去掉
+      // let result = '[]'
+    </script>
+  </body>
+</html>
