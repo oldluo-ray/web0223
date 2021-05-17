@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>React App</title>
+
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div id="root">
+      <div class="todo-container">
+        <div class="todo-wrap">
+          <div class="todo-header">
+            <input
+              type="text"
+              placeholder="请输入你的任务名称，按回车键确认"
+              id="addTodo"
+            />
+          </div>
+          <h1 id="tip" style="display: none">恭喜您,没有任务要完成</h1>
+          <div id="container">
+            <ul class="todo-main">
+              <!-- <li>
+                <label>
+                  <input type="checkbox" />
+                  <span>xxxxx</span>
+                </label>
+                <button class="btn btn-danger" style="display: none">
+                  删除
+                </button>
+              </li> -->
+            </ul>
+            <div class="todo-footer">
+              <!-- <label>
+                <input type="checkbox" />
+              </label>
+              <span> <span>已完成0</span> / 全部2 </span>
+              <button class="btn btn-danger">清除已完成任务</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // 获取元素
+      const tip = document.getElementById('tip')
+      const container = document.getElementById('container')
+      const todo_main = document.getElementsByClassName('todo-main')[0]
+      const todo_footer = document.getElementsByClassName('todo-footer')[0]
+      const addTodoInput = document.getElementById('addTodo')
+
+      // 注意: 由于删除,添加,修改之后,都要根据最新的数据重新渲染页面.所以将渲染页面的代码封装起来.哪里需要,就哪里调用
+      function render(todoList) {
+        console.log(todoList)
+        //1. 判断todoList有没有数据,如果有,就渲染下面的列表,如果没有就提示没有任务
+        if (todoList.length === 0) {
+          // 没有数据
+          tip.style.display = 'block'
+          container.style.display = 'none'
+          return
+        } else {
+          tip.style.display = 'none'
+          container.style.display = 'block'
+        }
+
+        // 2. 渲染列表
+
+        const arrList = todoList.reduce((preArr, item, index) => {
+          // 根据item,创建一个字符串,然后将创建好的字符串,添加到数组中
+          preArr.push(
+            `<li>
+                <label>
+                  <input type="checkbox" ${
+                    item.isDone === 'true' ? 'checked' : ''
+                  }/>
+                  <span>${item.todoName}</span>
+                </label>
+                <button class="btn btn-danger" >
+                  删除
+                </button>
+              </li>`
+          )
+          return preArr
+        }, [])
+        // console.log(strList)
+
+        // 3. 渲染底部
+        // 要计算全选是否要选中
+        // 计算任务列表的长度
+        const totalListCount = todoList.length
+        let DoneTotalCount = 0
+        todoList.forEach((item) => {
+          if (item.isDone === 'true') {
+            DoneTotalCount++
+          }
+        })
+
+        let footer = `
+              <label>
+                <input type="checkbox" ${
+                  totalListCount === DoneTotalCount ? 'checked' : ''
+                } />
+              </label>
+              <span> <span>已完成${DoneTotalCount}</span> / 全部${totalListCount} </span>
+              <button class="btn btn-danger">清除已完成任务</button>`
+
+        todo_main.innerHTML = arrList.join('')
+        todo_footer.innerHTML = footer
+      }
+
+      // 为了实现jsonp,定义一个函数
+      function getTodoList(todoList) {
+        // console.log(todoList)
+        // 2. 根据数据渲染页面
+        render(todoList)
+      }
+      //  1. 打开页面,第一件事件,就是给服务器发送请求,获取所有的任务列表
+      // 由于要使用jsonp跨域,所以不适用xhr
+      //创建script标签元素
+      const script = document.createElement('script')
+      // 添加请求地址
+      script.src = 'http://127.0.0.1:5000/findTodos?callback=getTodoList'
+      // 让script添加到页面上发送请求
+      document.body.appendChild(script)
+
+      // 这里写的代码是请求成功才会执行吗?会不会被script发送请求的操作阻塞?
+      // 这里的代码不会阻塞
+
+      // 由于剩下的增删改的需求都需要发送post请求.所以直接将重复的代码封装起来
+      function myAjaxPost(options) {
+        return new Promise((resolve, reject) => {
+          let { url, data, success } = options
+
+          const xhr = new XMLHttpRequest()
+          xhr.open('post', url)
+          xhr.setRequestHeader(
+            'content-type',
+            'application/x-www-form-urlencoded'
+          )
+          const params = obj2str(data)
+          xhr.send(params)
+
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+              resolve(JSON.parse(xhr.responseText))
+            }
+          }
+        })
+      }
+
+      // myAjaxPost发送请求的参数,是{键: 值, 键:值}.希望转成"键=值&键=值".所以还是封装函数
+      function obj2str(data) {
+        let arr = []
+        for (let key in data) {
+          arr.push(`${key}=${data[key]}`)
+        }
+        return arr.join('&')
+      }
+
+      // 具体实现新增的逻辑
+      // 注册抬起事件,如果是回车,才新增
+      addTodoInput.onkeyup = async function (e) {
+        if (e.keyCode === 13) {
+          // 获取用户输入的数据
+          const value = this.value.trim()
+          if (!value) return
+          // 清空文本框
+          this.value = ''
+          // 发送ajax请求
+          const todoList = await myAjaxPost({
+            url: 'http://127.0.0.1:5000/addTodo',
+            data: {
+              todoName: value,
+            },
+          })
+          // console.log(todoList)
+          render(todoList)
+        }
+      }
+
+      // 修改的逻辑
+    </script>
+  </body>
+</html>
