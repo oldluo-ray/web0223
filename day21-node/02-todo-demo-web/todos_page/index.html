@@ -72,10 +72,10 @@
                 <label>
                   <input type="checkbox" ${
                     item.isDone === 'true' ? 'checked' : ''
-                  }/>
+                  } id=${item._id} />
                   <span>${item.todoName}</span>
                 </label>
-                <button class="btn btn-danger" >
+                <button class="btn btn-danger" id=${item._id}>
                   删除
                 </button>
               </li>`
@@ -106,6 +106,13 @@
 
         todo_main.innerHTML = arrList.join('')
         todo_footer.innerHTML = footer
+        //注意:由于底部的元素只有渲染了完才会有,所以要在render的最下面获取元素,注册事件
+        let allCheckedBtn = document.querySelector('.todo-footer input')
+        allCheckedBtn.onclick = allCheckboxFn
+
+        // 渲染完成后,才能找到清空所有完成项的按钮
+        let clearAllDone = document.querySelector('.todo-footer .btn')
+        clearAllDone.onclick = clearAllDoneFn
       }
 
       // 为了实现jsonp,定义一个函数
@@ -179,6 +186,109 @@
       }
 
       // 修改的逻辑
+      // 任务列表中的复选框的修改:
+      // 事件委托
+      todo_main.onclick = async function (e) {
+        // 找到事件目标 e.target
+        // 但是委托之后,里面所有的子元素点击都会触发.只需要让input[checkbox]触发
+        if (e.target.getAttribute('type') === 'checkbox') {
+          // 获取当前复选框的值
+          const checked = e.target.checked
+          // 获取要修改的数据的id
+          let ids = e.target.id
+          // 要求上传一个数组,数组中存放id
+          ids = [ids]
+          console.log(checked, ids)
+          // 修改数据中中的数据
+          const todoList = await myAjaxPost({
+            url: 'http://127.0.0.1:5000/updateTodos',
+            data: {
+              isDone: checked,
+              // 在obj2str中,拼接字符串的时候,会自动将数组通过toString转成字符串.就丢失了[].所以,先将数组转成json字符串.在拼接就不会有问题了
+              ids: JSON.stringify(ids),
+            },
+          })
+
+          // 数据修改成功之后,就重新渲染
+          render(todoList)
+        }
+      }
+
+      // 全选的按钮
+      async function allCheckboxFn() {
+        // 获取checked的值
+        const checked = this.checked
+        // console.log(checked)
+        // 发送ajax请求, 将所有的任务的isDone改成checked的值
+        // 要给服务器上传所有的任务的id
+        // 先获取到所有的任务的id
+        let inputs = document.querySelectorAll('.todo-main li input')
+        // inputs是一个伪数组,为了使用数组的方法,将一个伪数组转成数组
+        inputs = Array.from(inputs)
+        console.log(inputs)
+        let ids = inputs.map((item) => {
+          return item.id
+        })
+        // console.log(ids)
+        // 数据都有了,可以发送ajax请求了
+        const todoList = await myAjaxPost({
+          url: 'http://127.0.0.1:5000/updateTodos',
+          data: {
+            isDone: checked,
+            ids: JSON.stringify(ids),
+          },
+        })
+
+        render(todoList)
+      }
+
+      // 删除的逻辑了
+      // 注意: 由于要给todo_main注册两个点击事件.on+事件名的形式是不支持的.所以下面的注册,使用addEventListener
+
+      todo_main.addEventListener('click', async function (e) {
+        // console.log(e.target)
+        if (e.target.className === 'btn btn-danger') {
+          // console.log('点击的是删除按钮')
+          // console.log(e.target.id)
+          // 发送ajax请求
+          const todoList = await myAjaxPost({
+            url: 'http://127.0.0.1:5000/deleteTodos',
+            data: {
+              ids: JSON.stringify([e.target.id]),
+            },
+          })
+
+          render(todoList)
+        }
+      })
+
+      // 清空所有完成项的逻辑
+      async function clearAllDoneFn() {
+        // 找到所有任务的复选框
+        let inputs = document.querySelectorAll('.todo-main li input')
+        // 将伪数组转成数组
+        inputs = Array.from(inputs)
+
+        // 遍历这个数组,拿到所有完成项的id
+        const ids = inputs.reduce((preArr, item) => {
+          if (item.checked) {
+            // 数组的push方法会修改原来的数组,但是返回值是修改之后,数组的长度
+            preArr.push(item.id)
+          }
+          return preArr
+        }, [])
+
+        // console.log(ids)
+        // 数据有了就可以发送ajax请求
+        const todoList = await myAjaxPost({
+          url: 'http://127.0.0.1:5000/deleteTodos',
+          data: {
+            ids: JSON.stringify(ids),
+          },
+        })
+
+        render(todoList)
+      }
     </script>
   </body>
 </html>
