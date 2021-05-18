@@ -1,0 +1,10 @@
+div {
+  color: red;
+  background-color: yellow;
+}
+div span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: green;
+}

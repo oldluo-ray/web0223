@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // localStorage 是浏览器端的技术. node没有
+      // 作用: 用来将数据存储到浏览器端
+      let arr = [] //比如我们定义一个数组/对象/其他数据类型,这些数据在程序运行的时候,会存储在内存中,当程序不再运行,这些数据就没有了
+      // 有时候,当程序停止运行了,我们还是希望某些数据,可以存储在浏览器中(存在硬盘)
+      // 这时我们就需要使用localStorage
+
+      // 怎么存数据
+
+      //   localStorage.setItem('键', 值)
+      // 注意: localStorage只能存储字符串
+      // 解决: 将一个数组/对象转成json字符串存进去.用的时候拿出来,还是json字符串.再转成js对象即可
+
+      localStorage.setItem('test', 'abc')
+      localStorage.setItem('test1', JSON.stringify([1, 2, 3]))
+      localStorage.setItem('test2', JSON.stringify({ name: 'zs' }))
+
+      // 怎么去数据
+
+      //   localStorage.getItem('键') 返回对应的值
+      console.log(localStorage.getItem('test'))
+      console.log(localStorage.getItem('test1'))
+      console.log(localStorage.getItem('test2'))
+    </script>
+  </body>
+</html>

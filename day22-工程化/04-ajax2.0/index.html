@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+      上传键值对的字符串: 
+      content-type: applciation/x-ww....
+      上传json的字符串:
+      content-type: application/json
+
+      上传文件: 
+      content-type: multipart/form-data
+    
+    -->
+    <!-- 这是使用表单上传文件 -->
+    <!-- <form
+      action="http://127.0.0.1:5000/upload"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <input type="file" name="file" />
+      <input type="submit" />
+    </form> -->
+
+    <!-- 使用ajax上传文件 -->
+    <input type="file" id="file" /> <button id="btn">点击上传文件</button>
+    <script>
+      btn.onclick = function () {
+        // 1. new FormData 用来管理要上传的文件
+        var formData = new FormData()
+        // 2. 获取上传的文件的文件对象
+        // file是上传文件的表单项的dom对象.files是个伪数组,里面存储了要上传的文件对象
+        const fileObj = file.files[0]
+        // console.dir(file)
+        // 将文件对象,添加到formdata中
+        // 第一个参数就是上传文件对应的键.实际开发.要通过接口文档去查询
+        // 类似于form表单中name的值
+        formData.append('file', fileObj)
+        formData.append('id', 'xxxyyyzzz')
+
+        const xhr = new XMLHttpRequest()
+        // 注意: 使用FormData,就只能使用post请求
+        xhr.open('post', 'http://127.0.0.1:5000/upload')
+        // 注意: 请求头不需要设置.因为使用了formData之后,浏览器会自动设置
+        // formdata可以作用上传的数据,直接写在send里面
+
+        xhr.upload.onprogress = function (e) {
+          console.log('当前上传了多少', e.loaded)
+          console.log('总共有多少', e.total)
+        }
+        xhr.send(formData)
+      }
+    </script>
+  </body>
+</html>

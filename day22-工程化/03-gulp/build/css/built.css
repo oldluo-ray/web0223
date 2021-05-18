@@ -1,0 +1,68 @@
+input {
+  border: none;
+}
+list {
+  list-style: none;
+}
+
+div {
+  color: red;
+}
+div span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+input {
+  border: none;
+}
+list {
+  list-style: none;
+}
+
+div {
+  color: red;
+  background-color: yellow;
+}
+div span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+input {
+  border: none;
+}
+list {
+  list-style: none;
+}
+
+div {
+  color: red;
+  background-color: yellow;
+}
+div span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #fff;
+}
+
+input {
+  border: none;
+}
+list {
+  list-style: none;
+}
+
+div {
+  color: red;
+  background-color: yellow;
+}
+div span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: green;
+}
